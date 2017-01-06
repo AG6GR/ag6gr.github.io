@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Carvis - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-carvis.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="hardware,electrical engineering,robotics" />
+        <meta name="description" content="Autonomous sound-localizing guard robot built on a RC car chassis" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Carvis"/>
+        <meta property="og:url" content="/projects-carvis.html"/>
+        <meta property="og:description" content="Autonomous sound-localizing guard robot built on a RC car chassis"/>
+        <meta property="article:published_time" content="2016-05-20" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="hardware" />
+            <meta property="article:tag" content="electrical engineering" />
+            <meta property="article:tag" content="robotics" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-carvis.html"
+                       rel="bookmark"
+                       title="Permalink to Carvis">
+                        Carvis
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-05-20T12:00:00-04:00"> Fri 20 May 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/hardware.html">hardware</a>
+        /
+	<a href="/tag/electrical-engineering.html">electrical engineering</a>
+        /
+	<a href="/tag/robotics.html">robotics</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Carvis</h1>
+<p><center>
+<img src='/images/carFrontSide.jpg' width='360'>        <img src='/images/carSide.jpg' width='360'>
+</center>
+ELE 302 (Building Real Systems) is the junior level capstone lab class in the Electrical Engineering curriculum. For the independent project portion of this class, we created Carvis the autonomous guard robot. Carvis continuously patrols a route marked out with black tape on the floor. If it hears a large sound like a clap or footstep, the robot stops and attempts to interrogate the source of the sound by playing sound effects and shining a bright light. If the intruder displays the proper identification, the robot returns to patrolling the track. Otherwise, it sounds a loud alarm with its lights and speakers. The primary technical challenge of the project was in the techniques for sound localization via time difference of arrival in order to accurately determine the direction of origin of the sound, and thus turn its LED and camera in the proper direction.</p>
+<p>As this project was completed as part of the ELE 302 course, we are required to keep source code and some details of the drive system private. Feel free to contact the authors <a href="https://github.com/AG6GR">Sunny He</a> and <a href="https://github.com/vbpo">Vincent Po</a> for more details.</p>
+<h2>Sound Localization</h2>
+<p><center>
+<img src='/images/SoundDiagram.png' width='480'>
+</center>
+Our primary goal is to use sound to localize the position of a loud audio pulse, such as the sound of a clap. The approach we used is the technique of time difference of arrival, where the direction to the source of the sound is determined based on the difference in time the sound wave takes to reach two or more microphones located a known distance apart. With two microphones, the bearing to a sound source can be calculated fairly easily using trigonometry, assuming the distance to the sound source is large relative to the distance between the two microphones.
+From the above model, the bearing θ can be calculated as:</p>
+<p>θ = sin−1(∆T/d)</p>
+<p>The principle disadvantage of this approach is that there is a ambiguity as to which quadrant the true bearing lies in. Mathematically, the locus of possible sound source locations for a given time difference traces out a hyperbola with the two microphones as the foci. By detecting which microphone is triggered first, we can determine if the source is to the left or right of the car’s centerline, equivalent to one branch of the hyperbola. However the ambiguity as to whether the sound came from in front of the car or behind the car remains. We chose to resolve this ambiguity by checking both the forward and backward bearings when visually identifying the sound source. To acquire complete triangulation of the sound source (as well as determine its distance) we could have used three microhpones, but the time saved would not justify the substantial added complexity.</p>
+<h2>Sound Detection</h2>
+<p><center>
+<img src='/images/micTop.jpg' width='360'>
+<img src='/images/MicBoard.png' width='480'>
+</center>
+Two identical circuits were constructed on protoboard to acquire and amplify sounds before sending the signals to the main PSoC for processing. The microphones used were small electret microphones (Pro Signal ABM-707-RC). The microphone output was amplified with a basic inverting op-amp circuit based around the LM324. The signal is then compared to a threshold with a LM311 comparator to give a simple digital output. Originally we intended to include extra filtering and reserved space on the microphone board to implement active filters. Had we needed the actual shape of the waveform rather than just the arrival time, additional filtering may have been appropriate. However, testing showed that the inherent band-limited response of the microphone provided enough noise suppression for our purposes.</p>
+<h2>Turret Construction</h2>
+<p><center>
+<img src='/images/turretFront.jpg' width='240'>        <img src='/images/turretSide.jpg' width='240'>        <img src='/images/turretBack.jpg' width='240'>
+</center></p>
+<p>To take advantage of the sound localization data, we constructed a rotating turret which points in the direction of the sound. A 3D printed bracket attaches a Pixy camera and a custom LED driver circuit to the shaft of a stepper motor. An Arduino Uno controls the stepper motor, activates a MP3 player board to plays sound effects, and turns on the high power RGB LED.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

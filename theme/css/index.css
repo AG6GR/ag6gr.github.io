@@ -1,0 +1,18 @@
+footer {
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+	left: 0;
+}
+.contactbutton{
+	display: inline-block; /* Remove underline */
+	font-size: 22px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.bodyblock{
+	position:absolute;
+	left:50%;
+	top:30vh;
+	transform:translate(-50%,-40%)
+}
