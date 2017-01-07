@@ -5,6 +5,7 @@ footer {
 	left: 0;
 }
 .contactbutton{
+	color:black;
 	display: inline-block; /* Remove underline */
 	font-size: 22px;
 	margin-right: 5px;

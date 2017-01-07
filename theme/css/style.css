@@ -79,10 +79,11 @@ lists in the sidebar. To change, override in your CUSTOM_CSS           */
 #sidebar #social i {
     margin-right: 3px;
 }
-
+/*
 a, a:hover {
     color: inherit;
 }
+*/
 
 .entry-content a {
     text-decoration: none;
