@@ -106,9 +106,9 @@ Sunny He            </a>
                 </div>
                 <p><center><img width='360px' src='/images/diana_site.jpg' alt='TLM-18 Dish at the Project Diana site'/></center></p>
 <h1>Overview</h1>
-<p>Juniors in the electrical engineering department at Princeton may elect to complete a semester long independent work project under the supervision of a faculty advisor. During the fall semester of 2016, I had the opportunity to work with Professor Dan Marlow and Senior Research Physicist Norm Jarosik from the physics department on a project to conduct ranging measurements of the moon. This project included the design and implementation of RF systems to interface USRP software defined radios with the TLM-18 dish and the development of Python software to perform collection and post-processing of data.</p>
+<p>Juniors in the electrical engineering department at Princeton may elect to complete a semester long independent work project under the supervision of a faculty advisor. During the fall semester of 2016, I had the opportunity to work with Professor <a href="https://www.princeton.edu/physics/people/display_person.xml?netid=marlow&display=faculty" target="_blank">Dan Marlow</a> and Senior Research Physicist <a href="https://www.princeton.edu/physics/people/display_person.xml?netid=jarosik&display=Research%20Staff" target="_blank">Norm Jarosik</a> from the physics department on a project to conduct ranging measurements of the moon. This project included the design and implementation of RF systems to interface USRP software defined radios with the TLM-18 dish and the development of Python software to perform collection and post-processing of data.</p>
 <h3>Acknowledgments</h3>
-<p>This project was supported by funding from the Princeton University Department of Electrical Engineering and the Princeton University School of Engineering and Applied Science (SEAS). In addition, many thanks to Professor David Wentzlaff (EE) and Professor <a href="https://physics.princeton.edu/pulsar/k1jt/">Joe Taylor</a> (Physics) for their valuable input and advice over the course of this project.</p>
+<p>This project was supported by funding from the Princeton University Department of Electrical Engineering and the Princeton University School of Engineering and Applied Science (SEAS). In addition, many thanks to Professor <a href="http://ee.princeton.edu/people/faculty/david-wentzlaff" target="_blank">David Wentzlaff</a> (EE) and Professor <a href="https://www.princeton.edu/physics/people/display_person.xml?netid=joe&display=faculty" target="_blank">Joe Taylor</a> (Physics) for their valuable input and advice over the course of this project.</p>
 <h1>RF System Design</h1>
 <p>The TLM-18 antenna is an 18m-diameter microwave dish located at the former Project Diana site about 40 miles from campus. Prior to this independent work project, various faculty members refurbished the dish and installed hardware for making radio astronomy measurements at a 21cm wavelength. This existing hardware includes low-noise-amplifiers (LNA’s) and microwave filters for enabling the reception of weak signals.</p>
 <p><center><img width='720px' src='/images/rx_path.png' alt='TLM-18 Receive path block diagram'/></br>
@@ -118,7 +118,7 @@ Sunny He            </a>
 <p><center><img width='720px' src='/images/amplifier_panel.jpg' alt='Amplifier panel under test'/></br>
 <i>Amplifier panel under test</i>
 </center></p>
-<p>We ultimately selected a <a href='http://shop.kuhne-electronic.de/kuhne/en/shop/power-amplifiers/MKU+PA+23CM30W+HY++LDMOS+Power+Amplifier/?card=973'>Kuhne MKU PA 23CM - 30W Power Amplifier</a>. Attenuators were added between the USRP and Kuhne amplifier to ensure the amplifier output would never exceed the 10W input limit. A RF patch panel allowed the output of the amplifier to be connected in place of the amateur radio tranceiver already installed at the site. </p>
+<p>We ultimately selected a <a href='http://shop.kuhne-electronic.de/kuhne/en/shop/power-amplifiers/MKU+PA+23CM30W+HY++LDMOS+Power+Amplifier/?card=973' target="_blank">Kuhne MKU PA 23CM - 30W Power Amplifier</a>. Attenuators were added between the USRP and Kuhne amplifier to ensure the amplifier output would never exceed the 10W input limit. A RF patch panel allowed the output of the amplifier to be connected in place of the amateur radio tranceiver already installed at the site. </p>
 <h3>Control Circuitry</h3>
 <p>To disable the amplifier during receive, a small circuit was built to allow the USRP's built-in GPIO pins to toggle the 12V enable line on the Kuhne amplifier. This interface circuit output was also connected to the existing sequencer circuit, which controls the transmit-receive switches and high-power amplifiers.</p>
 <h1>Transmit Waveform</h1>
@@ -129,7 +129,7 @@ Sunny He            </a>
 </center></p>
 <p>The complex waveform was generated and analyzed using the SciPy Python package.</p>
 <h1>Radio Control</h1>
-<p>Interfacing with the USRP B210 software defined radios was accomplished through the <a href="http://gnuradio.org/">GNURadio</a> open-source toolkit. A Python script coordinated the transmit-receive switching, waveform transmission, and data collection.</p>
+<p>Interfacing with the USRP B210 software defined radios was accomplished through the <a href="http://gnuradio.org/" target="_blank">GNURadio</a> open-source toolkit. A Python script coordinated the transmit-receive switching, waveform transmission, and data collection.</p>
 <h1>Post-processing</h1>
 <p><center><img width='640px' src='/images/a7_spectrogram_d40.png' alt='Example spectrogram of received data'/></br>
 <i>Example spectrogram of received data</i>

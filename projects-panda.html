@@ -13,13 +13,13 @@
 
         <meta name="author" content="Sunny He" />
         <meta name="keywords" content="hackathon,IoT,javascript,electricimp" />
-        <meta name="description" content="A IoT pillbox that reminds you when to take your medicine" />
+        <meta name="description" content="An IoT pillbox that reminds you when to take your medicine" />
 
         <meta property="og:site_name" content="Sunny He" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="PANDA"/>
         <meta property="og:url" content="/projects-panda.html"/>
-        <meta property="og:description" content="A IoT pillbox that reminds you when to take your medicine"/>
+        <meta property="og:description" content="An IoT pillbox that reminds you when to take your medicine"/>
         <meta property="article:published_time" content="2015-12-10" />
             <meta property="article:section" content="Projects" />
             <meta property="article:tag" content="hackathon" />
@@ -116,20 +116,20 @@ Sunny He            </a>
 <center>
 <img src='/images/PANDA.png' width="450">
 </center></p>
-<p>PANDA is a smart pillbox that reminds you when to take your medicine! Using the web interface, you can tell PANDA what medicines you are taking and when to remind you. PANDA was created by Sunny He and <a href="vivianmo.me">Vivian Mo</a> during HackPrinceton Fall 2015, where it won 3rd Place Hardware Hack and Facebook’s Favorite Hack. The web interface can be found at <a href="http://ag6gr.github.io/PANDAv2/">http://ag6gr.github.io/PANDAv2/</a></p>
+<p>PANDA is a smart pillbox that reminds you when to take your medicine! Using the web interface, you can tell PANDA what medicines you are taking and when to remind you. PANDA was created by Sunny He and <a href="http://vivianmo.me" target="_blank">Vivian Mo</a> during HackPrinceton Fall 2015, where it won 3rd Place Hardware Hack and Facebook’s Favorite Hack. The web interface can be found at <a href="http://ag6gr.github.io/PANDAv2/" target="_blank">http://ag6gr.github.io/PANDAv2/</a></p>
 <p><center>
 <img src='/images/Closed.jpg' width="400"><img src='/images/Open.jpg' width="400">
 </center></p>
 <p>Once it is time to take your medication, PANDA will start beeping and light up the indicator next to the medicine you need to take. The only way to quiet PANDA is to open the box, so there is no chance you will forget to take your medicine. In addition, PANDA remembers if you took your medicine already. If the light is red, you know you don't need to take the pill </p>
 <h1>Motivation</h1>
-<p>Everyone has taken medications at some point in their life. According to a report by the <a href="http://kff.org/other/state-indicator/total-retail-rx-drugs/">Kaiser Family Foundation</a>, over 4 billion prescriptions were filled in 2014. Maybe it was antibiotics for an infection, statins for managing cholesterol levels, or just daily vitamins or supplements. What is in common for all of these medications is that they need to be taken at regular intervals for an extended period of time. </p>
-<p>Based on my own personal experience and the experiences of my parents and other people around me, I know the worry and frustration involved in keeping track of when to take medication. Beyond the inconvenience of managing multiple complex prescriptions, mistakes can have serious consequences. It is easy to forget to take a pill, or even worse, to accidentally take an extra dose. Approximately 44 people die from accidental overdoses every day in the US (Source: <a href="http://www.cdc.gov/drugoverdose/data/overdose.html">CDC</a>). Many of these overdoses are unnecessary deaths which can be easily prevented. When someone is sick, the last thing they want to be worrying about is when to take their vital medications. PANDA aims to use the power of IoT technology to help solve this important issue.</p>
+<p>Everyone has taken medications at some point in their life. According to a report by the <a href="http://kff.org/other/state-indicator/total-retail-rx-drugs/" target="_blank">Kaiser Family Foundation</a>, over 4 billion prescriptions were filled in 2014. Maybe it was antibiotics for an infection, statins for managing cholesterol levels, or just daily vitamins or supplements. What is in common for all of these medications is that they need to be taken at regular intervals for an extended period of time. </p>
+<p>Based on my own personal experience and the experiences of my parents and other people around me, I know the worry and frustration involved in keeping track of when to take medication. Beyond the inconvenience of managing multiple complex prescriptions, mistakes can have serious consequences. It is easy to forget to take a pill, or even worse, to accidentally take an extra dose. Approximately 44 people die from accidental overdoses every day in the US (Source: <a href="http://www.cdc.gov/drugoverdose/data/overdose.html" target="_blank">CDC</a>). Many of these overdoses are unnecessary deaths which can be easily prevented. When someone is sick, the last thing they want to be worrying about is when to take their vital medications. PANDA aims to use the power of IoT technology to help solve this important issue.</p>
 <p>I first tackled this problem with a partner during the Fall 2015 HackPrinceton hackathon. We developed PANDA, a smart, user-friendly pillbox powered by Electric Imp. PANDA can be configured remotely with a web interface, after which it will automatically notify the user whenever it is time to take medicine. After the hackathon, I extended PANDA to create PANDA v2, overhauling the user interface and backend software as well as expanding the physical PANDA device. A basic overview of the technical details of the systems powering PANDA is provided in the sections below.</p>
 <h1>Hardware</h1>
 <p><center>
 <img src='/images/OverviewOpen.jpg' width="400">
 </center></p>
-<p>PANDA is built around the Electric Imp platform. All processing is done by the imp001 module held in an April breakout board. A ribbon cable connects the pins of the April breakout board to a header on the protoboard where the other components are soldered. EAGLE schematics and a <a href="https://github.com/AG6GR/PANDAv2/blob/gh-pages/doc/BillOfMaterials.csv">Bill of Materials</a> for the electronics of PANDA are available in the <code>doc</code> directory.</p>
+<p>PANDA is built around the Electric Imp platform. All processing is done by the imp001 module held in an April breakout board. A ribbon cable connects the pins of the April breakout board to a header on the protoboard where the other components are soldered. EAGLE schematics and a <a href="https://github.com/AG6GR/PANDAv2/blob/gh-pages/doc/BillOfMaterials.csv" target="_blank">Bill of Materials</a> for the electronics of PANDA are available in the <code>doc</code> directory.</p>
 <p><center>
 <img src='/images/Imp.jpg' width="400">
 </center></p>
@@ -154,7 +154,7 @@ Sunny He            </a>
 </center></p>
 <p>Each medicine slot has a corresponding bicolor common-cathode LED which lights up green if the medicine should be taken and red if the medicine should not be taken. Each LED has its own 100Ω current limiting resistor between the cathode and ground, and the whole assembly is lovingly heat-shrink wrapped and connected to the main board with 22AWG wire. These LEDs are controlled through a 74HC595n shift register driven using one of the Electric Imp's hardware SPI busses. The advantage of the shift register is that it allows the number of LEDs to be increased despite the limited number of GPIO pins. Shift registers can also be easily chained to drive very large numbers of LEDs. By writing a 1 to the bit corresponding to the green or red anode of the LED, the LED will light with the desired color. Similarly, writing a 0 turns off the LED at that bit. A simple shift register class and LED classes have been created to handle LED toggling.</p>
 <h1>Software</h1>
-<p>PANDA can be configured using a <a href="http://ag6gr.github.io/PANDA/">web interface</a>, created using Bootstrap and Javascript. The web interface communicates with the Electric Imp servers using http requests. Timekeeping, request handling, and alert triggering are managed by the server side of the Electric Imp. The device is notified of alerts using the standard message passing functionality built into the Electric Imp platform. Source code is available on <a href="https://github.com/AG6GR/PANDAv2">Github</a>.</p>
+<p>PANDA can be configured using a <a href="http://ag6gr.github.io/PANDA/" target="_blank">web interface</a>, created using Bootstrap and Javascript. The web interface communicates with the Electric Imp servers using http requests. Timekeeping, request handling, and alert triggering are managed by the server side of the Electric Imp. The device is notified of alerts using the standard message passing functionality built into the Electric Imp platform. Source code is available on <a href="https://github.com/AG6GR/PANDAv2" target="_blank">Github</a>.</p>
 <p>Major changes in PANDAv2:
 <ul>
 <li> Added "Next Scheduled Doses" display to web interface
@@ -165,7 +165,7 @@ Sunny He            </a>
 <li> General code cleanup
 </ul></p>
 <h2>Electric Imp</h2>
-<p>Source code for the Electric Imp agent and device can be found in the <a href="https://github.com/AG6GR/PANDAv2/tree/gh-pages/src">src directory</a> of this repository.</p>
+<p>Source code for the Electric Imp agent and device can be found in the <a href="https://github.com/AG6GR/PANDAv2/tree/gh-pages/src" target="_blank">src directory</a> of this repository.</p>
 <h3>Device</h3>
 <p><center>
 <img src='/images/StateMachine.jpg' width="640">
@@ -182,7 +182,7 @@ Sunny He            </a>
 <p>A flowchart for the process of handling a HTTP request is shown above. Depending on the parameters given, the agent will create a prescription object for each prescription that has been configured. These objects are stored in a prescriptions array at the index corresponding to their ID number. </p>
 <p>Every second, a polling loop fetches the current time and checks if any of the prescriptions are due for an alert. If so, a message is crafted with the ID of the prescription to alert and the text corresponding to the prescription as the data. Once the message is sent, the prescription object calculates the time of the next dose, and the process continues.</p>
 <h2>Web Interface</h2>
-<p>The web interface was constructed using the <a href="http://getbootstrap.com/">Bootstrap framework</a> and Javascript. </p>
+<p>The web interface was constructed using the <a href="http://getbootstrap.com/" target="_blank">Bootstrap framework</a> and Javascript. </p>
 <h3>Main Page</h3>
 <p>When the main page is loaded, a Javascript script fetches the next scheduled alert times for each prescription using GET requests. The body of the response is then displayed under the corresponding label.</p>
 <p>Example GET request format: 
