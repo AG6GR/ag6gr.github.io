@@ -63,6 +63,86 @@ Sunny He            </a>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
+
+<style>
+    #mycontainer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    #mybackground, #mycontent {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #mycontent {
+        z-index: 10;
+    }
+</style>
+<div id="mycontainer">
+<div id="mybackground">
+    <style>
+        #myslides {
+            position: relative;
+            width: 100%;
+            height: 640px;
+            padding: 0px;
+            margin: 0px;
+            list-style-type: none;
+        }
+        .myslide {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 1;
+            -webkit-transition: opacity 5s;
+            -moz-transition: opacity 5s;
+            -o-transition: opacity 5s;
+            transition: opacity 5s;
+        }
+        .showing {
+            opacity: 0.1;
+            z-index: 2;
+        }
+        .myslide:nth-of-type(1) {
+            background-image: url("/background/junioriw.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .myslide:nth-of-type(2) {
+            background-image: url("/background/princetonion.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .myslide:nth-of-type(3) {
+            background-image: url("/background/sinfonia.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <ul id="myslides">
+        <li class="myslide showing"></li>
+        <li class="myslide"></li>
+        <li class="myslide"></li>
+    </ul>
+    <script>
+        var myslides = document.querySelectorAll('#myslides .myslide');
+        var currentSlide = 0;
+        var myslideInterval = setInterval(nextSlide,5000);
+        function nextSlide() {
+            myslides[currentSlide].className = 'myslide';
+            currentSlide = (currentSlide+1)%myslides.length;
+            myslides[currentSlide].className = 'myslide showing';
+        }
+    </script>
+</div> <!-- mybackground -->
+<div id="mycontent">
+
 <link rel="stylesheet" href="/theme/css/index.css" type="text/css"/>
 <div class="container text-center bodyblock">
 	<h1>Sunny He</h1>
@@ -84,6 +164,9 @@ Sunny He            </a>
 		<a href="category/projects.html">Projects</a>
 	</div>
 </div>
+
+</div> <!-- mycontent -->
+</div> <!-- mycontainer -->
 
         </div>
     </div>
