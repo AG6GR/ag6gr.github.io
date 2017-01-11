@@ -86,12 +86,12 @@ Sunny He            </a>
 <div id="mybackground">
     <style>
         #myslides {
-            position: relative;
-            width: 100%;
-            height: 640px;
-            padding: 0px;
-            margin: 0px;
-            list-style-type: none;
+            position: fixed;
+			left: 0px;
+			top: 50px;
+			width: 100%;
+			height: 100%;
+			list-style-type: none;
         }
         .myslide {
             position: absolute;
@@ -113,17 +113,17 @@ Sunny He            </a>
         .myslide:nth-of-type(1) {
             background-image: url("/background/junioriw.jpg");
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat-y;
         }
         .myslide:nth-of-type(2) {
-            background-image: url("/background/princetonion.jpg");
+            background-image: url("/background/princetonian.jpg");
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat-y;
         }
         .myslide:nth-of-type(3) {
             background-image: url("/background/sinfonia.jpg");
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat-y;
         }
     </style>
     <ul id="myslides">
