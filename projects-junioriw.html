@@ -110,9 +110,14 @@ Sunny He            </a>
 <h3>Acknowledgments</h3>
 <p>This project was supported by funding from the Princeton University Department of Electrical Engineering and the Princeton University School of Engineering and Applied Science (SEAS). In addition, many thanks to Professor <a href="http://ee.princeton.edu/people/faculty/david-wentzlaff" target="_blank">David Wentzlaff</a> (EE) and Professor <a href="https://www.princeton.edu/physics/people/display_person.xml?netid=joe&display=faculty" target="_blank">Joe Taylor</a> (Physics) for their valuable input and advice over the course of this project.</p>
 <h1>RF System Design</h1>
-<p>The TLM-18 antenna is an 18m-diameter microwave dish located at the former Project Diana site about 40 miles from campus. Prior to this independent work project, various faculty members refurbished the dish and installed hardware for making radio astronomy measurements at a 21cm wavelength. This existing hardware includes low-noise-amplifiers (LNA’s) and microwave filters for enabling the reception of weak signals.</p>
-<p><center><img width='720px' src='/images/rx_path.png' alt='TLM-18 Receive path block diagram'/></br>
+<h2>Receive Hardware</h2>
+<p><center><img width='720px' src='/images/rx_diag.png' alt='TLM-18 Receive path block diagram'/></br>
 <i>Receive path block diagram</i>
+</center></p>
+<p>The TLM-18 antenna is an 18m-diameter microwave dish located at the former Project Diana site about 40 miles from campus. Prior to this independent work project, various faculty members refurbished the dish and installed hardware for making radio astronomy measurements at a 21cm wavelength. This existing hardware includes low-noise-amplifiers (LNA’s) and microwave filters for enabling the reception of weak signals.</p>
+<h3>Transmit Hardware</h3>
+<p><center><img width='720px' src='/images/tx_diag.png' alt='Transmit path block diagram'/></br>
+<i>Transmit path block diagram</i>
 </center></p>
 <p>While the receive path of the TLM-18 antenna was already in place, additional hardware was necessary to enable transmit functionality. In particular, a series of microwave-frequency amplifiers were needed to increase the transmit power of the USRP radios. The USRP B210s being used have a transmit power output of about 10mW, while about 10W is required to drive the existing transmit power amplifier. </p>
 <p><center><img width='720px' src='/images/amplifier_panel.jpg' alt='Amplifier panel under test'/></br>
@@ -123,6 +128,9 @@ Sunny He            </a>
 <p>To disable the amplifier during receive, a small circuit was built to allow the USRP's built-in GPIO pins to toggle the 12V enable line on the Kuhne amplifier. This interface circuit output was also connected to the existing sequencer circuit, which controls the transmit-receive switches and high-power amplifiers.</p>
 <h1>Transmit Waveform</h1>
 <p>A literature review identified many different options for the transmitted waveform. Since the echo from the moon would be shifted a large amount both in time and in frequency, any coding scheme used needed to have good frequency-domain resolution as well as time-domain resolution. </p>
+<p><center><img width='640px' src='/images/costas10_spec.png' alt='Costas-10 code spectrogram'/></br>
+<i>Costas-10 code spectrogram</i>
+</center></p>
 <p>It was ultimately decided to use a class of codes known as Costas codes. These codes consist of a sequence of values, sent via FSK, with excellent correlation properties both in time and in frequency. The exact waveform used was a Costas-10 code using 10 distinct frequencies sent in a 0.1 sec interval.</p>
 <p><center><img width='640px' src='/images/costas10_autocorrelation.png' alt='Costas-10 code time-domain autocorrlation'/></br>
 <i>Costas-10 code time-domain autocorrelation</i>
@@ -131,10 +139,68 @@ Sunny He            </a>
 <h1>Radio Control</h1>
 <p>Interfacing with the USRP B210 software defined radios was accomplished through the <a href="http://gnuradio.org/" target="_blank">GNURadio</a> open-source toolkit. A Python script coordinated the transmit-receive switching, waveform transmission, and data collection.</p>
 <h1>Post-processing</h1>
-<p><center><img width='640px' src='/images/a7_spectrogram_d40.png' alt='Example spectrogram of received data'/></br>
+<p><center><img width='640px' src='/images/a7_spectrogram_d40_annotated.png' alt='Example spectrogram of received data'/></br>
 <i>Example spectrogram of received data</i>
 </center></p>
-<p>The echo from the moon could be clearly seen in the received data. Matched filtering was performed using SciPy to identify the transmitted waveform. Due to a minor error in the radio-control script, the first batch of data's sample rate was off by an unknown factor and had to be recalculated based on the delay between the start of recording and the start of transmission. Final results will be presented once this process is complete.</p>
+<p>The echo from the moon could be clearly seen in the received data. Matched filtering was performed using SciPy to identify the transmitted waveform.</p>
+<h2>Sample Rate Recovery</h2>
+<p>During analysis it became evident that there was a major discrepancy in the sample timing. It appeared almost as if the samples were being recorded with half the specified sample rate. Further testing revealed that running the script with the GUI interface enabled was causing heavy load on the computer, leading to buffer overuns and dropped samples. </p>
+<p>Given the limited time available, which precluded another recording session, we attempted to recover basic timing information from the recorded based on the delay between the start of recording and the start of transmission. By making the simplifying assumption that the packet loss happened at a consistent rate, missing samples could be modeled as a deviation in the sample rate.</p>
+<h2>Timing Data</h2>
+<p><center>
+<table class="table table-hover">
+<tr>
+    <th>Trial Number</th>
+    <th>Recovered "Actual" Sample Rate (Hz)</th>
+    <th>Round trip time (sec)</th>
+    <th>Earth-Moon Distance (km)</th>
+</tr>
+<tr>
+    <td> 1 </td> <td> 656719 </td> <td> 2.307 </td> <td> 345839 </td><br />
+</tr>
+<tr>
+    <td> 2 </td> <td> 656643 </td> <td> 2.308 </td> <td> 345921 </td>
+</tr>
+<tr>
+    <td> 3 </td> <td> 662131 </td> <td> 2.307 </td> <td> 345814 </td>
+</tr>
+<tr>
+    <td> 4 </td> <td> 642116 </td> <td> 2.388 </td> <td> 357998 </td>
+</tr>
+<tr>
+    <td> 5  </td> <td> 643052 </td> <td> 2.364 </td> <td> 354283 </td>
+</tr>
+<tr>
+    <td> 6 </td> <td> 650329 </td> <td> 2.345 </td> <td> 351518 </td>
+</tr>
+<tr>
+    <td> 7 </td> <td> 649577 </td> <td> 2.343 </td> <td> 351194 </td>
+</tr>
+<tr>
+    <td> 8 </td> <td> 660327 </td> <td> 2.307 </td> <td> 345768 </td>
+</tr>
+<tr>
+    <td> 9 </td> <td> 641099 </td> <td> 2.380 </td> <td> 356727 </td>
+</tr>
+<tr>
+    <td> 10 </td> <td> 661004 </td> <td> 2.253 </td> <td> 337681 </td>
+</tr>
+<tr>
+    <th scope="row">Average</th> <td>  652300 </td> <td> 2.330 </td> <td> 349274</td>
+</tr>
+<tr>
+    <th scope="row">2 sigma</th> <td> 16346 </td><td> 0.083 </td><td> 12422 </td>
+</tr>
+<caption>Round Trip Time and Distance Results</caption>
+</table>
+</center></p>
+<h1>Conclusion</h1>
+<p><center><img width='640px' src='/images/a8_range_doppler_t1850000_d5.png' alt='Example spectrogram of received data'/></br>
+<i>Example range-doppler correlation output</i>
+</center></p>
+<p>The TLM-18 dish was successfully upgraded with the hardware systems necessary to perform ranging experiments at 23-cm wavelength. Averaging across ten trials, the round trip time for a signal to traverse the Earth-Moon-Earth path was measured to be 2.33±0.08 sec, corresponding to a Earth-Moon distance of 350000±10000 km. </p>
+<p>Calculations based on accepted lunar orbit data place the  expected distance to the moon between 364043 and 364006 km during the observation period. As noted above, the likely source of this error is dropped samples due to excessive load on the computer running the USRP control scripts. Nevertheless, this result is remarkably close given the first-order approximation used to recover the sample rate.</p>
+<p>Overall, this project demonstrates the viability of performing Earth-based active radar astronomy with relatively low-cost experimental setups. It is hoped that the methods used and problems encountered will be instructive for others seeking to begin their own foray into the field of radar astronomy.</p>
             </div>
             <!-- /.entry-content -->
         </article>
