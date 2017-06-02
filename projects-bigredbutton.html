@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Big Red Button - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-bigredbutton.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="hackathon,electricimp,iot" />
+        <meta name="description" content="A big red IoT button" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Big Red Button"/>
+        <meta property="og:url" content="/projects-bigredbutton.html"/>
+        <meta property="og:description" content="A big red IoT button"/>
+        <meta property="article:published_time" content="2017-02-01" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="hackathon" />
+            <meta property="article:tag" content="electricimp" />
+            <meta property="article:tag" content="iot" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-bigredbutton.html"
+                       rel="bookmark"
+                       title="Permalink to Big Red Button" style="color:black">
+                        Big Red Button
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-02-01T12:00:00-05:00"> Wed 01 February 2017</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/hackathon.html">hackathon</a>
+        /
+	<a href="/tag/electricimp.html">electricimp</a>
+        /
+	<a href="/tag/iot.html">iot</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Big Red IoT Button</h1>
+<p></br>
+<center><img src='/images/Icon.JPG' alt='Big Red Button' width=50%/></center>
+</br>
+Taking root from an impulse buy of a 10 cm large red arcade button during a clearance sale, this project is a simple Electric Imp-powered IoT button that posts to popular messaging platforms like Slack and GroupMe. The first iteration was thrown together during HackPrinceton Fall 2016, and posted messages to the "random" channel of the HackPrinceton Slack group. After the hackathon, the button was repurposed to serve as a kind of IoT dinner bell for the Brown Co-op at Princeton University, sending a message to the co-op GroupMe when dinner was ready.</p>
+<h2>Hardware</h2>
+<p>The hardware for the button centered around an Electric Imp <a target="_blank" href="https://electricimp.com/docs/hardware/resources/reference-designs/april/"> April development board</a> and a 10 cm illuminated red arcade button from <a target="_blank" href="https://www.adafruit.com/product/1185">Adafruit</a>. The setup was powered from a single 9V battery, with a NPN transistor used to control the button's light. </p>
+<p>Taking a conservative estimate of 50mA at 3.3V for the imp001's power usage, the majority of the power consumed by the device comes from the LED in the button, which draws about 10mA at 9V. Thus, with a 600mAh 9V battery, the button could run continuously for well over 20 hours on a single 9V battery. In practice, code was added to place the imp in sleep mode after a certain run time, and the button is unlikely to be used for more than a few seconds every day. If we assume the device is run for a minute per day every day, the battery would need to be changed about once every 1200 days or 3 and a quarter years. 
+</br></p>
+<h2>Slack</h2>
+<p></br>
+<center><img src='/images/SlackMessage.png' alt='Slack Message' width=75%/></center>
+</br>
+The most basic form of the device code used during the hackathon simply sent a message to the server-side agent whenever the imp detected a transition on the pin connected to the button's microswitch. Then the agent would make a HTTP POST request to <a target="_blank" href="https://api.slack.com/incoming-webhooks">Slack's Incomming Webhook API</a> with a predefinied message.</p>
+<p>In practice, the code is exceedingly simple, just 10 lines including comments! Here's the complete agent code:
+</br>
+<script src="https://gist.github.com/AG6GR/00a35b27888f4fb149d35774f0529dc8.js"></script>
+</br>
+Here's the first revision of the device code, which had a basic timeout functionality built in to prevent people from spamming the list by mashing the button.
+</br>
+<script src="https://gist.github.com/AG6GR/7304cfbc8265121dc74d94a19bc4c57d.js"></script>
+</br></p>
+<h2>GroupMe</h2>
+<p></br>
+<center><img src='/images/GroupMeMessage.png' alt='Slack Message' width=25%/></center>
+</br>
+After the Hackathon the button was adapted to work with <a target="_blank" href=" https://dev.groupme.com/tutorials/bots">GroupMe's Bot API</a>. Creating a bot with the online form gives a Bot ID and Group ID which can then be used to post messages using HTTP POST requests. The same device code can be used, and the agent is practically identical.
+</br>
+<script src="https://gist.github.com/AG6GR/e9b3422ce59500b263f7e912cbf3a12c.js"></script>
+</br></p>
+<h2>Deployment</h2>
+<p></br>
+<center><img src='/images/HackPrincetonDeploy.png' alt='HackPrinceton Deployment' width=75%/></center>
+</br>
+The button was remarkably succesful, and attracted a lot of attention wherever it went. The Electric Imp platform and chat services' APIs worked very quickly, such that someone could press the button and get a push notification on their phone without perceptible delay. 
+</br>
+<center><img src='/images/HackPrincetonReaction.png' alt='HackPrinceton Reactions' width=25%/></center>
+</br>
+The best part of this project was watching people's reactions. The physicality of pressing the button combined with the quick response and complete lack of wires made for a really compelling experience. Furthermore, the public visibility of the messages really helped to draw attention to the button and served as a subtle form of advertising for the Electric Imp platform. I think it played no small part in ensuring my Electric Imp workshop later that night was well attended. </p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
