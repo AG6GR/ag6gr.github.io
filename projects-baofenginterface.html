@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Baofeng Interface - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-baofenginterface.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="amateur radio" />
+        <meta name="description" content="Audio interface for Baofeng handheld radios" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Baofeng Interface"/>
+        <meta property="og:url" content="/projects-baofenginterface.html"/>
+        <meta property="og:description" content="Audio interface for Baofeng handheld radios"/>
+        <meta property="article:published_time" content="2017-07-16" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="amateur radio" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-baofenginterface.html"
+                       rel="bookmark"
+                       title="Permalink to Baofeng Interface" style="color:black">
+                        Baofeng Interface
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-07-16T12:00:00-04:00"> Sun 16 July 2017</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/amateur-radio.html">amateur radio</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Baofeng Audio Interface</h1>
+<p></br>
+<center><img src='/images/Overview.jpg' alt='Baofeng interface setup' width=30%/></center>
+</br>
+Baofeng has gained a level of noteriety for their extremely affordable and reasonably capable budget handheld radios. In particular, the UV-5R 2m/70cm HT retails for about $30. This presents an opportunity to  build a basic APRS station at a relatively low cost. This project covers the design and construction of a small circuit board to implement an isolated audio interface and PTT switching between a UV-5R and a Raspberry Pi or other computer.</p>
+<h1>Interface Circuit</h1>
+<p>The circuit is relatively simple, featuring a pair of 1:1 isolation transformers for the receive and transmit audio and an optocoupler for driving the PTT line. The pinout for the Baofeng radio's audio plugs was found <a target="_blank" href="http://www.miklor.com/COM/UV_Technical.php">here</a>. I used <a target="_blank" href="http://kicad-pcb.org/">Kicad</a> for schematic capture and PCB layout.
+</br>
+<center><img src='/images/InterfaceSchematic.png' alt='Baofeng interface schematic' width=50%/></center>
+</br>
+</br>
+<center><img src='/images/InterfacePCBLayoutTop.png' alt='Baofeng interface PCB layout' width=30%/>
+<img src='/images/InterfacePCBLayoutTraces.png' alt='Baofeng interface PCB traces' width=30%/>
+</center>
+</br>
+I sent out the design to <a target="_blank" href="https://oshpark.com/">OSHPark</a> to be fabricated. The cable for connecting to the radio's audio input/output was taken from the cheapest Baofeng handheld external speaker/mic I could find on Amazon.</p>
+<h1>Raspberry Pi</h1>
+<p></br>
+<center><img src='/images/RaspiMounting.jpg' alt='Raspberry Pi Connection' width=50%/>
+</center>
+</br>
+The 2x4 pin header on the computer side of the board is designed to slot into the GPIO header of a Raspberry Pi. The audio input and output are connected to a <a target="_blank" href="https://www.amazon.com/external-Adapter-Windows-Microphone-SD-CM-UAUD/dp/B001MSS6CS">USB audio adapter</a>. On the Raspberry Pi B+ I was using, this puts the PTT pin on GPIO pin 18.</p>
+<h1>APRS</h1>
+<p>To start off, I set up APRS on the Raspberry Pi using the <a target="_blank" href="https://github.com/wb2osz/direwolf">Direwolf soundcard APRS software</a>, following the <a target="_blank" href="https://github.com/wb2osz/direwolf/blob/master/doc/Raspberry-Pi-APRS.pdf">Raspberry Pi config guide</a>. I used <a target="_blank" href="http://xastir.org/index.php/Main_Page">Xastir</a> as my APRS client on my laptop, connecting to the KISS server on the Raspberry Pi. After playing with the audio settings, I was able to get some decodes. Triggering a transmission from Xastir also succesfully triggers the PTT on the Raspberry Pi, but I'm still working through some issues related to timing and audio levels. More details will be posted as they become available!</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
