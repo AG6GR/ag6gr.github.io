@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Business Card - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-businesscard.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="electrical engineering,art" />
+        <meta name="description" content="Simple touch activated PCB business card" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Business Card"/>
+        <meta property="og:url" content="/projects-businesscard.html"/>
+        <meta property="og:description" content="Simple touch activated PCB business card"/>
+        <meta property="article:published_time" content="2017-10-11" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="electrical engineering" />
+            <meta property="article:tag" content="art" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-businesscard.html"
+                       rel="bookmark"
+                       title="Permalink to Business Card" style="color:black">
+                        Business Card
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-10-11T12:00:00-04:00"> Wed 11 October 2017</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/electrical-engineering.html">electrical engineering</a>
+        /
+	<a href="/tag/art.html">art</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Business Card</h1>
+<p></br>
+<center><img src='/images/business_card.gif' alt='Business Card' width=50%/></center>
+</br></p>
+<p>In preparation for the fall recruiting season of senior year, I decided to make a PCB business card. While I had seen other examples of PCB cards before, most of them either had no circuitry or focused on microcontroller-based circuits. For my card, I wanted to take a middle route which took advantage of the aesthetic possibilities of PCB design while demonstrating some simple electrical functionallity.</p>
+<p>The final design has two touch pads that turn the ring of yellow LED's on and off. The circuitry is powered by a standard 2032 coin cell. The front of the card has my name and basic contact info, and the back silkscreen shows a copy of the board schematic.</p>
+<p>Design files are posted in this <a target="_blank" href="https://github.com/AG6GR/BusinessCard">Github repo</a>.</p>
+<h1>Circuit Description</h1>
+<p></br>
+<center><img src='/images/schematic.jpg' alt='Schematic' width=50%/></center>
+</br></p>
+<p>While the circuit may seem quite simple, it takes advantage of a number of non-obvious properties to make touch control possible. The N-MOSFET acts as a standard low-side switch, turning the yellow LED's on and off. The CR2032 coin cell supplies 2.8-3.0V, and its own internal resistance provides current limiting for the LED's. </p>
+<p>The touch pads rely on skin conductivity to charge up the gate capacitance of the MOSFET. While for most purposes skin may seem like an insulator, people are suprisingly conductive. Some quick work with a multimeter showed most people's fingers seemed to be range between 10 and 20 MOhm. The MOSFET on the board also isn't an ideal component. There is a small but still significant capacitance between the gate and source of the MOSFET. In the case of the <a target="_blank" href="http://www.mouser.com/search/ProductDetail.aspx?r=512-FDV301N">FDV301N MOSFETS</A> used on this board, the input capacitance is specified to be about 9.5pF.</p>
+<p>When a person bridges one pair of touch pads with their finger, this formes an RC circuit with a time constant of about 0.1-0.2 milliseconds. Pressing on the "ON" button charges the gate capacitance, turning the MOSFET on, while pressing the "OFF" button discharges the gate capacitance, turning the MOSFET off. A series resistor is added on the input line to help suppress stray induced currents, which would cause the LED's to flicker or turn on without being touched. The value is not critical, as long as it is relatively small compared to skin resistance. I also added pads for an extra capacitor to be added in parallel to the MOSFET's gate capacitance to tune the time constant, but ultimately this proved unnecessary.</p>
+<h1>Design Process</h1>
+<p></br>
+<center><img src='/images/paper.jpg' alt='Brainstorming' width=50%/></center>
+</br></p>
+<p>I performed the inital brainstorming and rough design on paper, mocking up different options with pencil in a ink 3.5x2" rectangle. I had the idea for the MOSFET-based touch circuit from earlier work, but there were some special design contraints to work with for this board.</p>
+<ul>
+<li>Size: The board must be within the normal business card size of 3.5x2", and be low-profile enough to carry around</li>
+<li>Components: While surface-mount components were mandatory to reduce the thickness of the card, I didn't have access to a reflow oven. To ease hand-soldering, all components had to be at least 1206.</li>
+<li>Simplicity: Use as few components as possible and avoid IC's.</li>
+<li>Clarity: My name and contact information had to be prominently featured. This is a business card after all.</li>
+<li>Aesthetics: It had to look good.</li>
+</ul>
+<p>I eventually settled on a star formation of LED's arranged around the battery, taking advantage of the dominating circular form to evoke a classic star or "sun" shape.</p>
+<p></br>
+<center><img src='/images/inkscape_layout.png' alt='Inkscape Mockup' width=50%/></center>
+</br></p>
+<p>Next the design was finalized in Inkscape as an SVG vector file. I used the <a target="_blank" href="https://fonts.google.com">Google Fonts</a> tool to find the <a target="_blank" href="https://fonts.google.com/specimen/Karla">Karla</a> font used for all the lettering.</p>
+<h1>PCB Layout</h1>
+<p></br>
+<center><img src='/images/pcb_layout.png' alt='PCB Layout' width=50%/></center>
+</br>
+The rest of the board layout was performed in KiCAD. Silkscreen elements were directly converted into KiCAD components using the <a target="_blank" href="https://github.com/mtl/svg2mod">svg2mod tool</a>. The touch pads were individually made into their own components in order to properly define pads and solder mask. The image of the schematic on the rear was created by plotting an SVG representation of the schematic from KiCAD, then cleanup and conversion to a PNG in Inkscape, followed by importing via the bitmap2component tool in KiCAD. The svg2mod tool had difficulty with the thin lines in the schematic, and bitmap conversion proved to give a much better result. I also resized the board slightly, to 50x90mm.</p>
+<h1>Manufacture and Assembly</h1>
+<p></br>
+<center><img src='/images/bare_board.jpg' alt='Bare Board' width=50%/></center>
+</br>
+I ordered ten boards from <a target="_blank" href="https://www.elecrow.com/10pcs-2-layer-pcb.html">Elecrow's PCB service</a>, choosing a black soldermask and 0.6mm thickness. With DHL shipping ($17.04), the total price came out to $28.54. Elecrow has a nice habit of sending extra boards, so I ended up with 11 boards at a cost of $2.59 each.</p>
+<h2>Bill of Materials</h2>
+<p><center>
+<table class="table table-hover">
+<tr>
+    <th> Part </th>
+    <th> Manufacturer </th>
+    <th> Part Number </th>
+    <th> Quantity (per board) </th>
+    <th> Price (per board)</th>
+    <th> Source </th>
+</tr>
+<tr>
+    <td> Yellow LEDs </td>
+    <td> Lite-On </td>
+    <td> LTST-C150KSKT </td>
+    <td> 6 </td>
+    <td> 6 x $0.288 @ 36 Units </td>
+    <td><a href="http://www.mouser.com/search/ProductDetail.aspx?r=859-LTST-C150KSKT">Mouser</a></td> 
+</tr>
+<tr>
+    <td> N-Channel MOSFET </td>
+    <td> ON/Fairchild </td>
+    <td> FDV301N </td>
+    <td> 1 </td>
+    <td> $0.156 @ 15 Units </td>
+    <td> <a href="http://www.mouser.com/search/ProductDetail.aspx?r=512%2dFDV301N">Mouser</a> </td>
+</tr>
+<tr>
+    <td> 1KOhm Resistor </td>
+    <td> Yaego </td>
+    <td> RC1206FR-071KL </td>
+    <td> 1 </td>
+    <td> $0.024 @ 10 Units </td>
+    <td> <a href="http://www.mouser.com/ProductDetail/Yageo/RC1206FR-071KL/">Mouser</a> </td>
+</tr>
+<tr>
+    <td> Battery Holder </td>
+    <td> Linx Technologies </td>
+    <td> BAT-HLD-001 </td>
+    <td> 1 </td>
+    <td> $0.280 @ 5 Units </td>
+    <td> <a href="http://www.mouser.com/search/ProductDetail.aspx?r=712-BAT-HLD-001">Mouser</a> </td>
+<tr>
+    <td> CR2032 Coin Cell </td>
+    <td> Panasonic </td>
+    <td> CR2032 </td>
+    <td> 1 </td>
+    <td> $0.330 @ 5 Units </td>
+    <td> <a href="http://www.mouser.com/search/ProductDetail.aspx?r=658%2dCR2032">Mouser</a> </td>
+</tr>
+<tr>
+    <td> PCB </td>
+    <td> Elecrow </td>
+    <td></td>
+    <td> 1 </td>
+    <td> $2.59 @ 10 Units </td>
+    <td> <a href="https://www.elecrow.com/10pcs-2-layer-pcb.html">Elecrow</a> </td>
+</tr>
+<tr>
+    <th scope="row">Total: </th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>$5.11</td>
+    <td></td>
+</table>
+</center></p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
