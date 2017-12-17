@@ -116,7 +116,7 @@ Sunny He            </a>
 <p>Rotator.py defines a Rotator class for commanding the RC2800PX antenna rotators over serial communications. TleDecoder.py contains the original TLE decoding code written by AG6GR and was mainly used for testing the functionality of the TLE decoding code outside of the rest of the w2pu_track program.</p>
 <h2>Usage</h2>
 <p>Click on one of the radio buttons in the Pointing section to direct the antennas to your target of choice. By default, the available targets include celestial objects such as the sun and moon, the radio beacon W3CCX/B at 432.288 MHz, and the default Stow position. The final radio button enables satellite tracking mode.</p>
-<p align="center"><img src ="/images/TrackWindow.png" align="center" />
+<p align="center"><img src ="/images/TrackWindow.png" align="center" width="40%"/>
 </p>
 
 <p align="center"><em>Figure 1: Main Window</em></p>
@@ -125,11 +125,18 @@ Sunny He            </a>
 <h2>Satellite Tracking</h2>
 <p>When the program starts, it will create a database of satellites using two-line elements from one of two sources. The user may manually provide NORAD style two-line elements in the text file <code>TLE.txt</code> located in the <code>src</code> directory. Additionally, the program will attempt to fetch two-line elements from the web. By default, the program is configured to use the <a href="http://www.amsat.org/amsat-new/tools/keps.php" target="_blank">AMSAT Keplerian Element Database.</a> Both of these sources can be changed by modifying the values of global variables <code>TLEURL</code> and <code>TLEFILENAME</code> in <code>w2pu_track.py</code>.</p>
 <p>Clicking on the last radio button labeled "Satellite" will switch to satellite tracking mode. A dialog should appear showing the satellites currently being tracked by the program. The name of each tracked satellite is listed along with its current position in the format <code>(elevation, azimuth)</code>
-<p align="center"><img src ="/images/SatSelectDialog.png" align="center" />
+<p align="center"><img src ="/images/SatSelectDialog.png" align="center" width="25%"/>
 </p></p>
 <p align="center"><em>Figure 2: Satellite Selection Dialog</em></p>
 
 <p>Once a satellite has been selected, the radio button label will be updated to refer to the currently selected satellite. Clicking on the button again will reopen the selection dialog to allow a different satellite to be selected.</p>
+<h2>Satellite Reception</h2>
+<p>As a proof of concept, this setup was used to receive telemetry data from a couple different cubesats. In particular, I was able to record the morse code telemetry beacons on Cubesat XI-IV and Cubesat XI-V of the <a href="http://www.space.t.u-tokyo.ac.jp/cubesat/index-e.html" target="_blank">University of Tokyo Cubesat Team</a> and sent a copy of the received audio to their team. Much to my suprise, a couple years later they replied with a pair of QSL cards confirming the reception report. Scans have been attached below. Many thanks to the Nakasuka Laboratory at the University of Tokyo and congratulations on launching and maintaining such a long-lived Cubesat mission!</p>
+<p align="center"><img src ="/images/JQ1YCW_QSL_Cover.jpg" align="center" width="50%"/>
+</p>
+
+<p align="center"><img src ="/images/JQ1YCW_QSL_Back.jpg" align="center" width="30%"/><img src ="/images/JQ1YGW_QSL.jpg" align="center" width="30%"/>
+</p>
             </div>
             <!-- /.entry-content -->
         </article>
