@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>High Altitude Balloon - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-highaltitudeballoon.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="amateur radio,electrical engineering,c" />
+        <meta name="description" content="Princeton Rocketry Club high altitude balloon avionics and telemetry" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="High Altitude Balloon"/>
+        <meta property="og:url" content="/projects-highaltitudeballoon.html"/>
+        <meta property="og:description" content="Princeton Rocketry Club high altitude balloon avionics and telemetry"/>
+        <meta property="article:published_time" content="2017-12-02" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="amateur radio" />
+            <meta property="article:tag" content="electrical engineering" />
+            <meta property="article:tag" content="c" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-highaltitudeballoon.html"
+                       rel="bookmark"
+                       title="Permalink to High Altitude Balloon" style="color:black">
+                        High Altitude Balloon
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-12-02T12:00:00-05:00"> Sat 02 December 2017</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/amateur-radio.html">amateur radio</a>
+        /
+	<a href="/tag/electrical-engineering.html">electrical engineering</a>
+        /
+	<a href="/tag/c.html">c</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>High Altitude Balloon</h1>
+<p></br>
+<center><img src='/images/launched.jpg' alt='Balloon in flight' width=30%/></center>
+</br>
+One of the many projects I worked on with the Princeton Rocketry Club was a high altitude balloon launch. I helped design and build the avionics and telemetry gathering systems for this balloon. The ultimate goal would be to carry an experiment for measuring high-altitude microbe counts by taking air samples. For this launch, only the basic tracking avionics and meterological sensors were included to validate the basic system.</p>
+<p>Source code, board designs, and flight telemetry is available on <a target="_blank" href="https://github.com/PrincetonRocketryClub/high-altitude-balloon">Github</a></p>
+<h1>Payload</h1>
+<p></br>
+<center><img src='/images/payload.jpg' alt='Paylod Exterior' width=30%/></center>
+</br></p>
+<p>The payload's mechanical design was conducted by the other members of the team. The avionics were contained within a large 1.5 foot styrofoam box. This box is oversized to eventually accomodate the biological experiment. A Hwoyee 1600g balloon was used.</p>
+<h1>Avionics</h1>
+<p></br>
+<center><img src='/images/avionics.jpg' alt='Avionics' width=70%/></center>
+</br></p>
+<p>The primary microcontroller used is a <a target="_blank" href="https://www.pjrc.com/store/teensy35.html">Teensy 3.5</a>. The Teensy is a Arduino-compatible ARM based development board. Software was be based on the <a target="_blank" href="https://github.com/trackuino/trackuino">Trackuino project</a> with modifications for Teensy DAC support from <a target="_blank" href="https://github.com/rvnash/aprs_teensy31">this project.</a></p>
+<p>The Teensy communicated with a BMP180 Temperature/Pressure sensor via I2C and a Ublox MAX-M8 GPS module over UART serial. In addition, a 10KΩ thermistor provided temperature measurements from outside the enclosure. All sensors were polled every two seconds and readings recorded on a microSD card in CSV format.</p>
+<p>Power was provided by a <a target="_blank" href="https://www.adafruit.com/product/354">4400mAh LiPo battery</a> through a <a target="_blank" href="https://www.adafruit.com/product/2465">5V boost converter</a>. The battery was oversized to provide extra power in case the biology experiement ended up requiring it. Our calculations indicated that this would give a maximum flight time of over nine hours with our minimal payload, well in excess of what is required.</p>
+<p></br>
+<center><img src='/images/pcb.png' alt='PCB Design' width=50%/></center>
+</br>
+A custom PCB was designed in KiCAD to hold everything together. The board was milled on an Othermill PCB mill from single-sided copper clad board.</p>
+<h1>Telemetry</h1>
+<p></br>
+<center><img src='/images/antenna.jpg' alt='Antenna' width=70%/></center>
+</br>
+Telemetry was transmitted via APRS on the 2 meter amateur radio band using the <a target="_blank" href="http://www.radiometrix.com/content/hx1">HX1 2m Transmitter</a>. This module has an output power of about 300mW tuned to a frequency of 144.390 MHz. The antenna was a simple dipole built out of piano wire soldered to a piece of copper-clad board. A through-hole SMA connector was then soldered onto the board and the whole thing encased in hot glue. After tuning, the antenna achieved a SWR of 1.2 at 144.390 MHz.</p>
+<p></br>
+<center><img src='/images/swr.jpg' alt='SWR Measurement' width=30%/></center>
+</br></p>
+<p>The Teensy was intended to trigger a transmission every minute below 100 meters of altitude with path of WIDE1-1,WIDE2-2 and switch to transmitting every two minutes above 100 meters of altitude with path of WIDE1-1. However, it appears the firmware revision that launched did not have this switchover enabled, so the balloon stuck to the low-altitude transmission settings.</p>
+<h3>APRS Message Format</h3>
+<p>The message format was based on the "Lat/Long Position Report Format — with Data Extension and Timestamp" format in the <a target="_blank" href="http://www.aprs.org/doc/APRS101.PDF">APRS spec</a>. The symbol used was <code>/O</code> (Primary symbol table, symbol ID 'O' corresponding to balloon).</p>
+<p>The raw message string:
+<code>[Data Type ID flag:/]HHMMSSh[Latitude ddmm.hh[N/S](8b)][SymtableID (1b)][Longitude dddmm.hh[W/E](9b)][Symbol Code (1b)][Course/Speed (7b)][Arb. data (36b)]</code> </p>
+<h3>Comment format</h3>
+<p>The comment or arbitrary data section at the end of the message was used to record sensor readings.
+<table class="table table-hover">
+    <tr>
+        <th>Chars</th><th>Description</th><th>Example</th>
+    </tr>
+    <tr>
+        <td>5</td><td>Timestamp (sec)</td><td>12000</td>
+    </tr>
+    <tr>
+        <td>1</td><td>Separator</td><td>,</td>
+    </tr>
+    <tr>
+        <td>5</td><td>BMP180 Temperature (C)</td><td>-60.0</td>
+    </tr>
+    <tr>
+        <td>1</td><td>Separator</td><td>,</td>
+    </tr>
+    <tr>
+        <td>6</td><td>BMP180 Pressure (Pa)</td><td>101580</td>
+    </tr>
+    <tr>
+        <td>1</td><td>Separator</td><td>,</td>
+    </tr>
+    <tr>
+        <td>4</td><td>Thermistor ADC Value, max 1023</td><td>1017</td>
+    </tr>
+    <tr>
+        <th scope="row">23</td><th scope="row">Total</td><td> </td>
+    </tr>
+</table></p>
+<h1>Launch</h1>
+<p></br>
+<center><img src='/images/prediction.png' alt='Track Prediction' width=70%/></br>
+<i>HabHub track prediction</i>
+</center>
+</br></p>
+<p>We performed pre-launch track predictions using the HabHub online prediction tool. The payload weight including a weight to simulate the biology experiment was 2.02kg.</p>
+<p></br>
+<center><img src='/images/helium_calc.png' alt='Helium Prediction' width=50%/></br>
+<i>Helium fill calculations</i>
+</center>
+</br></p>
+<p>A few issues were encountered at launch, which were root caused to the microSD card not being fully inserted.</p>
+<p></br>
+<center><img src='/images/launch_day.jpg' alt='Helium Prediction' width=50%/></br>
+<i>Field debugging</i>
+</center>
+</br></p>
+<p>Once the balloon cleared the treetops, its APRS packets were quickly picked up by the APRS network. Overall tracking was suprisingly good throughout the entire flight.</p>
+<p></br>
+<center><img src='/images/tracking_map.png' alt='APRS tracking map' width=70%/></br>
+<i>Tracking map</i>
+</center>
+</br></p>
+<p></br>
+<center><img src='/images/altitude.png' alt='Altitude profile' width=70%/>
+</center>
+</br></p>
+<p>The ascent rate and initial path followed predictions nicely. Unfortunately, it appears our balloon was much tougher than anticipated and drifted quite a bit higher than the predicted burst height. After burst, it appears the balloon free-fell for a while, causing a Teensy reboot for some reason. The last few packets record the balloon descending at a steady 7 m/s under the parachute into the waters just off Long Island. Overall, this was a fun project and great learning experience. The APRS tracking and avionics performed well throughout the flight. We now have a much better idea of the balloon launch process and some of the quirks involved. Hopefully next launch will conclude with a more successful recovery.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-109315919-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
