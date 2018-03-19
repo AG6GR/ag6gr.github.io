@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>RF Fingerprinting - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-rffingerprinting.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="python,gnuradio" />
+        <meta name="description" content="Identify Wifi stations at physical layer based on RF characteristics" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="RF Fingerprinting"/>
+        <meta property="og:url" content="/projects-rffingerprinting.html"/>
+        <meta property="og:description" content="Identify Wifi stations at physical layer based on RF characteristics"/>
+        <meta property="article:published_time" content="2018-03-18" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="gnuradio" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-rffingerprinting.html"
+                       rel="bookmark"
+                       title="Permalink to RF Fingerprinting" style="color:black">
+                        RF Fingerprinting
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-03-18T12:00:00-04:00"> Sun 18 March 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/gnuradio.html">gnuradio</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>RF Fingerprinting for Defeating MAC Address Spoofing</h1>
+<p>802.11 wireless devices rely on Media Access Control (MAC) addresses to identify wireless stations. However, MAC addresses can be easily faked or ”spoofed” by attackers attempting to impersonate other stations. This project applies the technique of RF fingerprinting to verify the identity of 802.11 wireless devices at the physical layer. While prior research into RF fingerprinting has looked at hand-crafted features, this project takes a deep-learning approach by training neural networks to perform classifications of raw I/Q samples captured by a software defined radio. This approach will be validated by constructing a proof-of-concept system for automatic identification of spoofed beacon packets in a realistic wireless environment.</p>
+<p>This project is being conducted as my senior thesis advised by Professor Paul Prucnal and Thomas Ferreira de Lima of the <a target='_blank' href="http://ee.princeton.edu/research/prucnal/node?destination=node">Princeton Lightwave Communications Research Lab</a>.</p>
+<h1>Background</h1>
+<p>Radio-frequency (RF) fingerprinting generally refers to techniques that leverage imperfections or features of devices’ wireless transmissions to identification and classification tasks. Although this thesis looks at the specific task of identifying Wi-Fi devices, these RF fingerprinting methods are also applicable to other wireless communications systems. The first broad category of fingerprinting techniques look at transient features occurring during the powering up of the device's transmitter and RF amplifiers. A second class of analysis methods analyze steady state properties derived from the main body of a transmission. The primary advantages of such an approach come from the less stringent detection requirements compared to analysis of temporally short transients. However, steady state analysis depends on the existence of common portions of the signal that exist independent of any user-defined data.</p>
+<h1>Experimental Setup</h1>
+<p></br>
+<center><img src='/images/ExperimentalSetup.png' alt='Experimental Setup' width=50%/></center>
+</br></p>
+<p>The core of the system is a powerful server running CentOS 7. Equipped with dual NVIDIA GTX 1080 GPU's, this server will also be used to train and run the neural networks used to perform RF fingerprinting and classification.</p>
+<p>A USRP X310 software defined radio is the primary device responsible for capturing raw RF waveforms. The USRP is initially equipped with a SBX-120 daughterboard permitting 120 MHz bandwidth receive capability between 400 MHz and 4.4 GHz. This enables the simultaneous sampling of the entire 2.4 GHz Wi-Fi band. Samples are streamed to the host computer over an 10 Gb/s Ethernet link.</p>
+<p>For capturing higher level information about Wi-Fi packets, a Alfa USB Wi-Fi dongle configured in monitor mode was used. This specific dongle was chosen primarily for its comparability with Wireshark and the Aircrack-ng software suite needed to enable promiscuous monitoring of  Wi-Fi packets.</p>
+<p>Finally, a set of target Wi-Fi devices were chosen. To test the ability of the RF fingerprinting methodology to distinguish between different devices, a range of commerically available consumer and business access points were acquired. For the more difficult task of identifying different devices with the same model and chipset, four <a target="_blank" href="https://www.adafruit.com/product/3269">ESP32 Wifi Modules</a> were used to provide a higher level control over the transmitted packets and eliminate confounding factors.</p>
+<h1>Packet Capture</h1>
+<p>The packet recording process was designed to be as automated as possible. The goal was to detect incoming Wi-Fi packets and dump the raw complex I/Q samples into a binary file for later processing.</p>
+<p></br>
+<center><img src='/images/burst_rx.png' alt='Packet Detection' width=50%/></center>
+</br></p>
+<p>Control of the USRP software defined radio was managed through the <a target="_blank" href="https://www.gnuradio.org/">GNU Radio</a> open source signal processing library. GNU Radio offers a Simulink-style block based graphical interface for designing complex signal processing "flowgraphs." These flowgraphs are then converted into Python modules which can be independently executed. To determine the beginning and end of a Wi-Fi packet in the complex sample stream, a basic RMS power threshold was applied.</p>
+<p></br>
+<center><img src='/images/packet_rx.png' alt='Packet Reception Flowgraph' width=50%/></center>
+</br></p>
+<p>Beyond identifying packet start and end, the GNU Radio flowgraph was also performed Wi-Fi channel selection by frequency translation and band pass filtering. The full flowgraph is shown above.</p>
+<h1>Preliminary Results</h1>
+<p></br>
+<center><img src='/images/PacketSeparation.png' alt='Packet Separation' width=70%/></center>
+</br></p>
+<p>Preliminary testing has shown the viability of the presented automatic packet capture and labeling system. Once proper thresholds were set, the flowgraph  consistently captured all beacon packets transmitted by the target access point during the recording period. Furthermore, the packet separation block worked well even for very closely spaced packets.</p>
+<p></br>
+<center><img src='/images/esp_combined.png' alt='Same Device Packet Spectrum' width=70%/></center>
+</br></p>
+<p>Furthermore, visual inspection of the captured training data set shows distinct differences in the packets transmitted from different devices. Even with the same packet contents, taking the average of the Fourier Transforms for the packets sent by two of the ESP32 devices shows clear visual difference in the packets' spectral characteristics.</p>
+<h1>Next Steps</h1>
+<p>Now that a system has been established for collecting Wi-Fi data, work can begin on using this data to start exploring deep learning architectures for performing fingerprinting. It is highly likely that certain elements of the packet collection process may be tweaked to better suit the needs of machine learning algorithms.</p>
+<p>Finally, while the current labeling scripts are run offline after the packet capture has completed, it would be interesting to create a version that runs online in parallel with data collection. This would ultimately permit live packet identification, which would significantly enhance the completeness and practicality of the proposed fingerprinting system.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-109315919-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
