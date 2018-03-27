@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Lightsaber - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-lightsaber.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="blender" />
+        <meta name="description" content="Motion tracking and compositing for fun and profit" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Lightsaber"/>
+        <meta property="og:url" content="/projects-lightsaber.html"/>
+        <meta property="og:description" content="Motion tracking and compositing for fun and profit"/>
+        <meta property="article:published_time" content="2018-03-25" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="blender" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-lightsaber.html"
+                       rel="bookmark"
+                       title="Permalink to Lightsaber" style="color:black">
+                        Lightsaber
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-03-25T12:00:00-04:00"> Sun 25 March 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/blender.html">blender</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Lightsaber</h1>
+<p><center>
+</br>
+<video width=70% controls poster='/images/final_composite.jpg'>
+    <source src='/videos/final_mix.mp4' type='video/mp4'>
+</video>
+</br>
+</center>
+A fun exercise to learn how to work with motion tracking and compositing within Blender.</p>
+<h1>Modeling and Rigging</h1>
+<p></br>
+<center><img src='/images/modeling.png' alt='Lightsaber Model' width=50%/></center>
+</br></p>
+<p>I created the basic lightsaber model based on the ideas presented in this <a target="_blank" href="https://blender.stackexchange.com/questions/93752/lightsaber-effect-in-cycles-without-compositing">StackExchange post</a>. While most simple lightsaber effects create the aura effect via blurring in post-processing, I wanted a more accurate representation using volumetric lighting. This would allow easier integration with post-processing effects like motion blur, and allows more control of the shape and density of the aura.</p>
+<p>The "blade" of the lightsaber is a simply cylinder with a tapered end. A larger rounded cylinder around the core delineates the bounding box of the aura effect around the blade. Another cylinder serves as a mock handle, although the handle is not rendered in practice. The lighsaber is rigged with two bones, one for the handle, and one for the blade. The blade bone is constrained to match relative position and rotation with the handle's bone. The origin of the blade is set to match the hilt, such that the blade's extension can be controlled by scaling the blade bone.</p>
+<h1>Materials</h1>
+<p></br>
+<center><img src='/images/aura_nodes.png' alt='Aura Material' width=70%/></center>
+</br></p>
+<p>The core uses a simple emissive material with a slight tint to match the color of the blade. Most of the color comes from the aura, which has an emissive volume. The strength of the emission is controlled as a function of the object coordinates. This function is based on a scaled quadratic gradient.</p>
+<h1>Motion Capture</h1>
+<p></br>
+<center><img src='/images/camera_rig.jpg' alt='Camera Rig' width=50%/></center>
+</br></p>
+<p>A special camera tracking rig made from laser cut acrylic helped to reconstruct the camera position relative to the lightsaber. The basic design was created in <a target="_blank" href="https://cad.onshape.com/documents/98e55bb67e030cdc5bff698d/w/20fd94fcdff378f063275a41/e/3154ec2518589cf7a815591b">OnShape</a>. Both the base and top bar feature a grid of 1/4-20 passthrough holes for securing cameras and other equipment to the rig and a couple 1/4-20 tapped holes compatible with standard tripod mounting screws.</p>
+<p><center>
+</br>
+<video width=70% controls>
+    <source src='/videos/cameratracking.mp4' type='video/mp4'>
+</video>
+</br>
+</center></p>
+<p>Filming and motion capture was done using the CST Studiolab's Vicon mocap setup. I used my Vicon CSV importer addon to map the motion capture data onto the handle's armature and the virtual camera in Blender. In practice, the tracking showed very high accuracy. However, with some tracking dot arrangements there would be dramatic jumps in rotation or position when certain dots were occluded. These had to be manually edited out in Blender. In addition, proper matching of computer generated and real footage relies a lot on knowing the exact camera and lens parameters. </p>
+<h1>Compositing</h1>
+<p></br>
+<center><img src='/images/composite.png' alt='Video Compositing' width=50%/></center>
+</br></p>
+<p>The aura and lightsaber core were placed on their own renderlayer with environment disabled. The final output was produced by adding the renderlayer output to the background footage.</p>
+<p></br>
+<center><img src='/images/render_output.jpg' alt='Render output' width=45%/> <img src='/images/final_composite.jpg' alt='Final Composite' width=45%/></center>
+</br></p>
+<h1>Stills</h1>
+<p></br>
+<center><img src='/images/still_original.jpg' alt='Still Original' width=25%/>     <img src='/images/still_composite.jpg' alt='Still Final Composite' width=25%/>
+</center>
+</br></p>
+<p>Just for fun, I also rendered a few high quality still frames, taking advantage of the theatrical lighting setup built into the motion capture stage to replicate the light emitted by the lightsaber. </p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-109315919-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
