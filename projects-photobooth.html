@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>VFX Photobooth - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-photobooth.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="blender" />
+        <meta name="description" content="Self-contained photobooth for demonstrating VFX fundamentals" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="VFX Photobooth"/>
+        <meta property="og:url" content="/projects-photobooth.html"/>
+        <meta property="og:description" content="Self-contained photobooth for demonstrating VFX fundamentals"/>
+        <meta property="article:published_time" content="2018-05-15" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="blender" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-photobooth.html"
+                       rel="bookmark"
+                       title="Permalink to VFX Photobooth" style="color:black">
+                        VFX Photobooth
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-05-15T12:00:00-04:00"> Tue 15 May 2018</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/blender.html">blender</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>VFX Photobooth</h1>
+<p><center>
+</br>
+<img src='/images/profile.jpg' alt='VFX Photobooth' width=30%/></center>
+</br>
+The VFX Photobooth is a self-contained interactive tool for demonstrating and teaching visual effects techniques. When a person presses the big green button, the camera on the front of the box takes a photo. Using Blender, the photobooth then performs a number of basic visual effects processes such as background removal and compositing. Within a few seconds, the completed image is displayed on the back of the photobooth, with a link for people to download both the result image and the Blender files used to create it.</p>
+<p>This project was completed as part of the course STC 309: Independent Design in Engineering and the Arts. Source files can be found on <a target='_blank' href='https://github.com/AG6GR/PhotoBooth'>Github</a>.</p>
+<h1>Background</h1>
+<p>This project aims to help solve the problem of introducing visual effects to a larger audience. While pretty much everyone has seen the results of large-scale visual effects work in any modern blockbuster, the underlying technology and artistry is very seldom highlighted or discussed. Visual effect breakdowns produced as part of films' public relations campaigns highlight the latest technology but tend to be edited for maximum awe and impact rather than educational content. On the opposite end of the spectrum, tutorial videos for 3D animation and visual effects software have proliferated with the growth of web video platforms such as YouTube. While detailed, tutorials struggle to capture the imagination and are susceptible to becoming bogged down in the minutiae of specific software rather than imparting generally applicable concepts.</p>
+<p>What is needed is a way to quickly demonstrate visual effects concepts to a general audience while leaving the door open to more in-depth exploration. Earlier work with motion tracking to replicate famous effects such as a <a target='_blank' href='/projects-lightsaber.html'>lightsaber</a> showed that even simple effects can make for compelling demonstrations. Could we create a teaching tool that stands on its own like a video, yet also be useful in a structured learning environment?</p>
+<p>For the purposes of this demo, I decided to focus on the process of compositing, as it is a very simply but vital component of any visual effects pipeline. Compositing refers to the task of layering different pieces of footage or imagery over each other, for instance adding real-life footage of an actor to a computer generated background. A common way to remove the background from foreground footage is chroma-keying or "green screening," where the background is painted a specific color, usually green, and the computer subtracts away all the pixels that are close to that chosen background color. These two processes can be easily automated, and so would make for a great demo.</p>
+<h1>Design</h1>
+<p>During early design brainstorming, the idea came up of adopting the form factor of a photobooth. In a traditional photobooth, a camera is set up in front of some backdrop. A group of friends carefully curates their presentation with props and costumes, poses in front of the camera, and receives an image that they can take with them. The booth itself requires very simple interaction, not more than a push button, making it easy to understand and use. Photobooths also inherently encourage customization and give the user creative freedom, helping to get users personally invested in the process as well as the result. </p>
+<p>Two primary use cases were considered when performing the initial design.</p>
+<h3>Casual User</h3>
+<p>Since the photobooth is intended to be a stand-alone unit, most people who run into it might not know much about or have much interest in visual effects prior to interacting with the device. In this case, ideally the device would show the user some of the basics of compositing, imparting a surface level understanding of what is happening and why this technique is useful. To this end, the final result image is probably the most valuable element for the casual user. Being able to go from a raw image to composited result quickly demonstrates the potential of the technology and also provides a nice takeaway that can be saved or shared on social media.</p>
+<h3>Workshop Participant</h3>
+<p>On the other side of the spectrum, the photobooth should also be able to foster a more in-depth exploration of these techniques, say by someone who has some interest in visual effects who wants to learn how to produce these effects on their own. By leveraging open-source tools and saving intermediate source files, the pipeline used by the photobooth should be easily replicated on any other computer. In addition to the final image, the photobooth should also support downloading all the intermediate source files and images so that an interested user could continue to play with and modify these effects. This could prove useful in a workshop setting as a way to quickly produce a set of personalized source material instead of relying on bland stock materials. The sense of personal connection might help encourage creative exploration and foster engagement with the core ideas behind visual effects.</p>
+<h1>Hardware</h1>
+<p></br>
+<center>
+<div class="container" style="width: 75%">
+    <div class="row">
+        <div class="col-sm-6">
+            <figure class="figure">
+                <img src='/images/design1.jpg' alt='Overall Design'/>
+                <figcaption class="figure-caption">Early Design Drawings</figcaption>
+            </figure>
+        </div>
+        <div class="col-sm-6">
+            <figure class="figure">
+                <img src='/images/mech.jpg' alt='Mechanical Design'/>
+                <figcaption class="figure-caption">Mechanical Design Sketch</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+</center>
+</br>
+The photobooth is laid out with a camera on one side and a 7" screen on the other. A large inviting <a target='_blank' href='https://www.adafruit.com/product/1193'>60mm green button</a> on the top serves as the key user input. The only thing a user needs to do to operate the photobooth is to press the button. A <a target='_blank' href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/">Raspberry Pi 3 B+</a> serves as the brains of the photobooth. Given the limited time available for this project, I chose to optimize for ease of setup rather than price and used the official <a target='_blank' href="https://www.raspberrypi.org/products/camera-module-v2/">Raspberry Pi Camera Module v2</a> and <a target='_blank' href="https://www.raspberrypi.org/products/raspberry-pi-touch-display/">7" touchscreen</a>. A generic 5V wall wart power supply was directly hooked to the Raspberry Pi and touchscreen to provide power.</p>
+<p><center>
+<div class="container" style="width: 75%">
+    <div class="row">
+        <div class="col-sm-6">
+            <figure class='figure'>
+                <img src='/images/glueup.jpg' alt='Enclosure Glueup'/>
+                <figcaption class="figure-caption">Enclosure Glueup</figcaption>
+            </figure>
+        </div>
+        <div class="col-sm-6">
+            <figure class='figure'>
+                <img src='/images/front.jpg' alt='Front View'/>
+                <figcaption class="figure-caption">Front View</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+</center></p>
+<p>I designed an laser-cut acrylic enclosure in <a target='_blank' href='https://cad.onshape.com/documents/9cab43432cf66ea9025f394f/w/33e44abe87cb871cb84aa6a3/e/cd991b4c983504fe6c4af452'>Onshape</a>. The enclosure was cut out of 1/8" acrylic and glued together with standard cyanoacrylate superglue. The bottom of the enclosure has a 1/4-20 tapped hole so that the whole unit can be mounted on any standard tripod. The camera module is screwed into the front with 2-56 screws. The Raspberry Pi attaches to the back of the touchscreen with the provided standoffs, and the screen itself is attached to the back of the enclosure with double-sided tape. The power cable is routed out through slots on the bottom of the enclosure.</p>
+<h1>Software</h1>
+<p><center>
+    <figure class="figure">
+        <img src='/images/BlockDiagram.png' alt='Block Diagram' width=70%/>
+        <figcaption class="figure-caption">Software Block Diagram</figcaption>
+    </figure>
+</center>
+</br>
+The software involved a number of different software packages tied together by a core Python script. ll images at every step of the pipeline are saved in the filesystem of the Raspberry Pi. This allows for easy passing of images in between all the different pieces of software and enables the webserver to efficiently host all the results. The primary user interface was displayed on the touchscreen as a webpage using Chromium running in kiosk mode. An <a target='_blank' href='https://httpd.apache.org/'>Apache HTTP Server</a> hosts both the kiosk webpage and output files. The Python script manages detecting button presses as GPIO events and grabbing images from the camera using the <a target='_blank' href='https://picamera.readthedocs.io/'>picamera</a> package. The <a target='_blank' href='https://www.semicomplete.com/projects/xdotool/'>xdotool</a> virtual keyboard tool injects keypresses to advance between different screens on the kiosk webpage.</p>
+<p><center>
+    <figure class='figure'>
+        <img src='/images/blender.png' alt='Blender Compositor' width=70%/>
+        <figcaption class="figure-caption">Blender Compositor Layout</figcaption>
+    </figure>
+</center></p>
+<p><a target='_blank' href='https://www.blender.org/'>Blender</a> performed the core work of compositing the images and producing the final output. A simple chroma-keying setup using the built-in <a target='_blank' href='https://docs.blender.org/manual/en/dev/compositing/types/matte/keying.html'>Keying Node</a> was created to perform background subtraction. The Python script chooses a background at random and inserts it into the correct relative path for Blender to access. The parameters of the Keying node took some time to optimize, but once the compositor setup had been set and saved in a .blend file, no further input was needed.</p>
+<p><center>
+    <figure class='figure'>
+        <img src='/images/back.jpg' alt='Back View' width=30%/>
+        <figcaption class="figure-caption">Back View</figcaption>
+    </figure>
+</center></p>
+<p>In total there are three pages shown on the screen. At the beginning, a simple welcome screen instructs the viewer to press the button. The moment the button is pressed, the camera snaps a photo and launches Blender to begin processing. The screen switches to a processing page, showing the raw captured output and a simple spinner to show activity. Once the final output is ready, a results page is displayed with the final image as well as links and a QR code where the result files can be downloaded for further exploration.</p>
+<h1>Results</h1>
+<p><center>
+<div class='container' style='max-height: 50%'>
+    <div class='row'>
+        <div class='col-sm-3'>
+            <figure class="figure">
+                <img src="/images/original.jpg" class="img-thumbnail" style="max-width: 20%">
+                <figcaption class="figure-caption">Image from camera</figcaption>
+              </figure>
+        </div>
+        <div class='col-sm-3'>
+            <figure class="figure">
+                <img src="/images/background.jpg" class="img-thumbnail" style="max-width: 20%">
+                <figcaption class="figure-caption">Background</figcaption>
+              </figure>
+        </div>
+        <div class='col-sm-3'>
+            <figure class="figure">
+                <img src="/images/ref.jpg" class="img-thumbnail" style="max-width: 20%">
+                <figcaption class="figure-caption">Green screen reference</figcaption>
+            </figure>
+        </div>
+        <div class='col-sm-3'>
+            <figure class="figure">
+                <img src="/images/result.png" class="img-thumbnail" style="max-width: 20%">
+                <figcaption class="figure-caption">Final composite</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+</center></p>
+<p>Overall the photobooth compositing performs very well when given a stable background and decent lighting. When it was demonstrated at the STC 309 year end project exhibition, a number of people came up and took photos on their own, without the need for instruction. A few people had difficult connecting to the network to download the results, but overall I felt that the photobooth achieved the starting goal of keeping the device easy to use. In the future, it may be interesting to look at how the device performs in a formal class environment rather than an open exhibition.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-109315919-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
