@@ -119,21 +119,21 @@ Taking root from an impulse buy of a 10 cm large red arcade button during a clea
 </br>
 The most basic form of the device code used during the hackathon simply sent a message to the server-side agent whenever the imp detected a transition on the pin connected to the button's microswitch. Then the agent would make a HTTP POST request to <a target="_blank" href="https://api.slack.com/incoming-webhooks">Slack's Incomming Webhook API</a> with a predefinied message.</p>
 <p>In practice, the code is exceedingly simple, just 10 lines including comments! Here's the complete agent code:
-</br>
-<script src="https://gist.github.com/AG6GR/00a35b27888f4fb149d35774f0529dc8.js"></script>
-</br>
-Here's the first revision of the device code, which had a basic timeout functionality built in to prevent people from spamming the list by mashing the button.
-</br>
-<script src="https://gist.github.com/AG6GR/7304cfbc8265121dc74d94a19bc4c57d.js"></script>
 </br></p>
+<script src="https://gist.github.com/AG6GR/00a35b27888f4fb149d35774f0529dc8.js"></script>
+<p></br>
+Here's the first revision of the device code, which had a basic timeout functionality built in to prevent people from spamming the list by mashing the button.
+</br></p>
+<script src="https://gist.github.com/AG6GR/7304cfbc8265121dc74d94a19bc4c57d.js"></script>
+<p></br></p>
 <h2>GroupMe</h2>
 <p></br>
 <center><img src='/images/GroupMeMessage.png' alt='Slack Message' width=25%/></center>
 </br>
 After the Hackathon the button was adapted to work with <a target="_blank" href=" https://dev.groupme.com/tutorials/bots">GroupMe's Bot API</a>. Creating a bot with the online form gives a Bot ID and Group ID which can then be used to post messages using HTTP POST requests. The same device code can be used, and the agent is practically identical.
-</br>
-<script src="https://gist.github.com/AG6GR/e9b3422ce59500b263f7e912cbf3a12c.js"></script>
 </br></p>
+<script src="https://gist.github.com/AG6GR/e9b3422ce59500b263f7e912cbf3a12c.js"></script>
+<p></br></p>
 <h2>Deployment</h2>
 <p></br>
 <center><img src='/images/HackPrincetonDeploy.png' alt='HackPrinceton Deployment' width=75%/></center>

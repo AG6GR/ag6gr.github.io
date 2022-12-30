@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>LiveMarble - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-livemarble.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="javascript,art" />
+        <meta name="description" content="3D globe using real time satellite imagery" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="LiveMarble"/>
+        <meta property="og:url" content="/projects-livemarble.html"/>
+        <meta property="og:description" content="3D globe using real time satellite imagery"/>
+        <meta property="article:published_time" content="2022-03-22" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="javascript" />
+            <meta property="article:tag" content="art" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-livemarble.html"
+                       rel="bookmark"
+                       title="Permalink to LiveMarble" style="color:black">
+                        LiveMarble
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2022-03-22T12:00:00-04:00"> Tue 22 March 2022</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/javascript.html">javascript</a>
+        /
+	<a href="/tag/art.html">art</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>LiveMarble</h1>
+<p><a href="https://ag6gr.github.io/LiveMarble/LiveMarble.html">Live Imagery, GOES only</a></p>
+<p><a href="https://ag6gr.github.io/LiveMarble/LiveMarbleOffline.html">Static Imagery, full globe</a></p>
+<p>This project aims to provide a real-time view of the globe using satellite imagery. While there are many excellent viewers for both satellite imagery, there's a surprising lack of a way to easily display live data in a 3D globe visualization.</p>
+<p>On one hand, you have excellent satellite imagery viewers, many including live data from geostationary satellites.</p>
+<ul>
+<li><a href="https://rammb-slider.cira.colostate.edu">SLIDER by RAMMB / CIRA @ CSU</a> provides live data from many satellites including Himawari and Meteosat, but only images and without easy download links</li>
+<li><a href="https://rammb.cira.colostate.edu/ramsdis/online/himawari-8.asp">RAMMB / CIRA</a> has download links for GOES and Himawari full-disk imagery on their website, but not Meteosat</li>
+<li><a href="https://www.star.nesdis.noaa.gov/GOES/index.php">NOAA STAR</a> provides GOES imagery</li>
+<li><a href="https://eumetview.eumetsat.int/static-images/latestImages/">EUMETSAT</a> provides Meteosat images, but most have annotations or enhancements applied </li>
+<li><a href="https://worldview.earthdata.nasa.gov/">NASA WorldView</a> has beautiful stitched views combining multiple satellites, but only displays a 2D projection.</li>
+</ul>
+<p>On the other hand, you have mapping software that provides a 3D globe visualization but doesn't use live data.</p>
+<ul>
+<li><a href="https://earth.google.com/web/">Google Earth</a></li>
+<li><a href="https://support.apple.com/guide/iphone/view-maps-iph10d7bdf26/ios">Apple Maps</a> on some devices</li>
+</ul>
+<h1>Satellites</h1>
+<p>For this visualization, temporal resolution and coverage is much more important than spatial resolution. As a result, geostationary weather satellites are the ideal data source as they provide frequent imagery of a large swath of the Earth. The <a href="https://space.oscar.wmo.int/gapanalyses?mission=2">World Meteorological Organization</a> provides an excellent listing of all weather satellites in operation, although finding the actual imagery is its own challenge. NOAA has <a href="https://www.nesdis.noaa.gov/current-satellite-missions/currently-flying">its own listing</a> of satellites it manages.</p>
+<p>One other notes is that the imagers on weather satellites aren't optimized to provide night-time imagery. Instead, most night-time imagery is constructed from IR cloud data overlayed over some fixed backdrop, most often the <a href="https://earthobservatory.nasa.gov/features/NightLights">Black Marble</a> composite. There are a few satellites with public night-time imagery. However these weren't included in this version of the page to avoid the complexity of interpolating between live geostationary imagery and polar imagery captured up to a day apart.</p>
+<ul>
+<li><a href="https://ngdc.noaa.gov/eog/viirs/download_ut_mos.html">Suomi National Polar Partnership (SNPP) VIIRS</a></li>
+<li><a href="https://eogdata.mines.edu/products/dmsp/">Defense Meteorological Satellite Program (DMSP)</a> has some excellent historical night-time light data, although it appears the data is only available through 2013.</li>
+</ul>
+<h1>Geometry</h1>
+<p>The primary technical challenge is to project the "full-disk images" as downloaded from the satellite imagery providers onto a globe. More specifically, we are performing UV texture mapping from onto a sphere. The <a href="https://www.goes-r.gov/users/docs/PUG-L1b-vol3.pdf">GOES-R Product Definition and User Guide (Volume 3: Level 1B Products)</a> provides formulas for mapping from image coordinates to and from geodetic latitude/longitude in section 5.1.2.8. However the formula and constants are given without derivation or much explanation. This section first presents a more detailed walkthrough of the NOAA method in case anyone else is wondering where all these numbers came from, followed by some optimizations used in the visualizations.</p>
+<h2>NOAA method</h2>
+<p>The mapping we are interested in is from geodetic coordinates to image coordinates, since we will be executing this in the geometry shader to map from a UV coordinate on the sphere to a texture coordinate to sample from the image. The general approach presented in 5.1.2.8.2 is to calculate the position of a given latitude/longitude <span class="math">\((\lambda,\phi)\)</span> on the Earth in the satellite's camera's coordinates <span class="math">\((s_x, s_y, s_z)\)</span> in meters. Then these camera coordinates is converted into scan angles, which can be directly looked up in the full disk image. Note that the formula presented in the user guide also provides for correction from GRS80 latitude/longitude to geocentric latitude/longitude to account for the oblateness of the Earth, but for simplicity this will be omitted in this visualization. I.e. we are setting <span class="math">\(\phi_c = \phi\)</span>.</p>
+<p><center><img src="/images/coordinate_conversion.svg" alt="Coordinate Conversion" width="50%"/></center></p>
+<p><span class="math">\(s_z\)</span> can be directly calculated from basic trigonometric relations as <span class="math">\(r_c \sin(\phi_c)\)</span>. Similarly the length of segment <span class="math">\(\overline{AC}\)</span> is <span class="math">\(r_c \cos(\phi_c)\)</span>. Then with segment <span class="math">\(\overline{AC}\)</span> as the hypotenuse of triangle ABC we can find <span class="math">\(s_y = (r_c \cos(\phi_c)) \sin(\lambda_0 - \lambda) = -r_c \cos(\phi_c)\sin(\lambda - \lambda_0)\)</span>. Note that the user manual transforms the angle term <span class="math">\(\sin(\lambda_0 - \lambda)\)</span> to <span class="math">\(-\sin(\lambda - \lambda_0)\)</span> for some reason, the key here is that points to camera right from the satellite's perspective are positive y. Finally, the length of segment <span class="math">\(\overline{BC}\)</span> is <span class="math">\(H-s_x = (r_c \cos(\phi_c)) \cos(\lambda_0 - \lambda)\)</span>, therefore <span class="math">\(s_x = H - r_c \cos(\phi_c)\cos(\lambda - \lambda_0)\)</span>.</p>
+<p><center><img src="/images/y_scan_angle_calculation.svg" alt="Y Scan Angle Conversion" width="75%"/></center></p>
+<p>Note that the scan angles are calculated in order elevation (N/S) first, then azimuth (E/W) if you think of them as Euler angles. If we construct point <span class="math">\(P'\)</span> by projecting the pointer <span class="math">\(P\)</span> onto the <span class="math">\(\lambda = \lambda_0\)</span> plane, then the vertical scan angle <span class="math">\(y = arctan(s_z / s_x)\)</span>. The horizontal scan angle <span class="math">\(x\)</span> is defined in terms of the right triangle formed by <span class="math">\(P\)</span>, <span class="math">\(P'\)</span>, and the satellite <span class="math">\(Sat\)</span>. In particular, the length of segment <span class="math">\(PP'\)</span> is <span class="math">\(s_y\)</span>, and the length of the hypotenuse between <span class="math">\(P\)</span> and the satellite is <span class="math">\(\sqrt{s_x^2 + s_y^2 + s_z^2}\)</span> giving the final expression <span class="math">\(x = \arcsin \left(-s_y / \sqrt{s_x^2 + s_y^2 + s_z^2}\right)\)</span>.</p>
+<h2>GLSL Implementation</h2>
+<p>One thing to note is that three.js uses a Y-up coordinate system. So in three.js <span class="math">\(s_x\)</span> is along the z axis, <span class="math">\(s_y\)</span> is along the x axis, and <span class="math">\(s_z\)</span> is along the y axis. I'm sticking with the NOAA coordinate system for the following discussion, just be aware the axes will be different in the GLSL code.</p>
+<p>We can vectorize much of the coordinate converion work in the GLSL implementation by taking advantage of the fact that the geometry shader has access to the generated normal vector, which is simply a radial vector since we are mapping onto a sphere. By rotating the normal vector by the angle corresponding to the satellite's longitude, we have a unit vector pointing in the direction of <span class="math">\(\overrightarrow{CP}\)</span> in the above diagram. This gives us <span class="math">\(s_y\)</span> and <span class="math">\(s_z\)</span> directly, albeit in units of Earth radii. Finally we can get <span class="math">\(s_x\)</span> by subtracting the <span class="math">\(x\)</span> component of the rotated normal vector from <span class="math">\(H/r_c\)</span>.</p>
+<p>For the calculation of the final scan angles, I did a small change to the calculation of the horizontal scan angle (x) by using the triangle <span class="math">\(ABSat\)</span> instead of the rotated triangle. Thus <span class="math">\(x = arctan(s_y/s_x)\)</span>. This is slightly more performant as we can vectorize the calculation together with the calculation of <span class="math">\(y\)</span> and it subjectively seems to partially cancel out the error from assuming a spherical Earth.</p>
+<h1>Citations</h1>
+<p>Beyond the satellite imagery sources cited above, the following resource were used:</p>
+<ul>
+<li><a href="https://threejs.org/">three.js</a> Javascript 3D framework</li>
+<li><a href="https://threejs.org/docs/#examples/en/controls/OrbitControls">OrbitControls</a> from three.js</li>
+<li><a href="https://svs.gsfc.nasa.gov/4851">Deep star map from NASA/Goddard Space Flight Center Scientific Visualization Studio</a> used as skybox</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-109315919-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

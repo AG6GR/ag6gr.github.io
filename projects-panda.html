@@ -134,12 +134,13 @@ Sunny He            </a>
 <img src='/images/Imp.jpg' width="400">
 </center></p>
 <p>The enclosure for PANDA is a repurposed cardboard box, with the dividers for the electronics and medicine created from thinner recycled card stock. The PANDA logos were printed out using a standard color printer and glued onto the enclosure. Overall, the mechanical design was aimed at reducing cost and reusing available materials whenever possible.</p>
-<p>Major changes in PANDAv2:
+<p>Major changes in PANDAv2:</p>
 <ul>
 <li> Added shift register for improved scalability
 <li> Added third medicine slot (and corresponding LED)
 <li> Transistor driver for buzzer
-</ul></p>
+</ul>
+
 <h2>Electronics</h2>
 <p><center>
 <img src='/images/LEDSchematic.png'>
@@ -155,7 +156,7 @@ Sunny He            </a>
 <p>Each medicine slot has a corresponding bicolor common-cathode LED which lights up green if the medicine should be taken and red if the medicine should not be taken. Each LED has its own 100Ω current limiting resistor between the cathode and ground, and the whole assembly is lovingly heat-shrink wrapped and connected to the main board with 22AWG wire. These LEDs are controlled through a 74HC595n shift register driven using one of the Electric Imp's hardware SPI busses. The advantage of the shift register is that it allows the number of LEDs to be increased despite the limited number of GPIO pins. Shift registers can also be easily chained to drive very large numbers of LEDs. By writing a 1 to the bit corresponding to the green or red anode of the LED, the LED will light with the desired color. Similarly, writing a 0 turns off the LED at that bit. A simple shift register class and LED classes have been created to handle LED toggling.</p>
 <h1>Software</h1>
 <p>PANDA can be configured using a <a href="http://ag6gr.github.io/PANDA/" target="_blank">web interface</a>, created using Bootstrap and Javascript. The web interface communicates with the Electric Imp servers using http requests. Timekeeping, request handling, and alert triggering are managed by the server side of the Electric Imp. The device is notified of alerts using the standard message passing functionality built into the Electric Imp platform. Source code is available on <a href="https://github.com/AG6GR/PANDAv2" target="_blank">Github</a>.</p>
-<p>Major changes in PANDAv2:
+<p>Major changes in PANDAv2:</p>
 <ul>
 <li> Added "Next Scheduled Doses" display to web interface
 <li> Rewrite of web interface Javascript
@@ -163,7 +164,8 @@ Sunny He            </a>
 <li> Expanded agent HTTP request handling
 <li> Modularized representation of prescriptions and LEDs for scalability
 <li> General code cleanup
-</ul></p>
+</ul>
+
 <h2>Electric Imp</h2>
 <p>Source code for the Electric Imp agent and device can be found in the <a href="https://github.com/AG6GR/PANDAv2/tree/gh-pages/src" target="_blank">src directory</a> of this repository.</p>
 <h3>Device</h3>
@@ -194,13 +196,13 @@ Sunny He            </a>
 <p>Time List style prescription: <code>https://agent.electricimp.com/AGENTID?id=#&amp;time=HH:MM,HH:MM,HH:MM...</code></p>
 <p>Start and Frequency style prescription: <code>https://agent.electricimp.com/AGENTID?id=#&amp;start=HH:MM&amp;freqH=##&amp;freqM=##</code></p>
 <h1>Next Steps</h1>
-<p>While PANDAv2 makes many improvements over the original PANDA software and hardware, there are still ways to continue to make PANDA better. A couple possibilities are listed below.
+<p>While PANDAv2 makes many improvements over the original PANDA software and hardware, there are still ways to continue to make PANDA better. A couple possibilities are listed below.</p>
 <ul>
 <li> LCD Integration: As noted in the Software section, PANDAv2 was originally intended to include an LCD. The device code and hardware necessary to interface with the LCD is already in place, and once a LCD is obtained, extending PANDAv2 to display dosage information to the user would substantially improve the usability of PANDA.
 <li> Web Interface Modularity: The Electric Imp code has been designed to be easily extendable, and the process of adding support for additional prescriptions is just a matter of changing a few constants. It would be great to extend this to the web interface, allowing the interface to detect how many prescriptions are actually supported and generate the forms accordingly.
 <li> Web Interface Input Validation: In the current iteration of PANDA, most of the form input validation happens in the agent code, while the prescription is being processed. Moving more of this code to the front-end Javascript could give the user feedback if they entered a field incorrectly, improving the overall user experience.
 <li> Miniaturization: While still quite portable, PANDA could probably be made much smaller with a custom PCB for the electronics and a redesigned enclosure. This would allow users to more easily take PANDA with them, expanding PANDA's ease of use.
-</ul></p>
+</ul>
             </div>
             <!-- /.entry-content -->
         </article>

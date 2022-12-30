@@ -118,7 +118,7 @@ The VFX Photobooth is a self-contained interactive tool for demonstrating and te
 <p>On the other side of the spectrum, the photobooth should also be able to foster a more in-depth exploration of these techniques, say by someone who has some interest in visual effects who wants to learn how to produce these effects on their own. By leveraging open-source tools and saving intermediate source files, the pipeline used by the photobooth should be easily replicated on any other computer. In addition to the final image, the photobooth should also support downloading all the intermediate source files and images so that an interested user could continue to play with and modify these effects. This could prove useful in a workshop setting as a way to quickly produce a set of personalized source material instead of relying on bland stock materials. The sense of personal connection might help encourage creative exploration and foster engagement with the core ideas behind visual effects.</p>
 <h1>Hardware</h1>
 <p></br>
-<center>
+<center></p>
 <div class="container" style="width: 75%">
     <div class="row">
         <div class="col-sm-6">
@@ -135,10 +135,10 @@ The VFX Photobooth is a self-contained interactive tool for demonstrating and te
         </div>
     </div>
 </div>
-</center>
+<p></center>
 </br>
 The photobooth is laid out with a camera on one side and a 7" screen on the other. A large inviting <a target='_blank' href='https://www.adafruit.com/product/1193'>60mm green button</a> on the top serves as the key user input. The only thing a user needs to do to operate the photobooth is to press the button. A <a target='_blank' href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/">Raspberry Pi 3 B+</a> serves as the brains of the photobooth. Given the limited time available for this project, I chose to optimize for ease of setup rather than price and used the official <a target='_blank' href="https://www.raspberrypi.org/products/camera-module-v2/">Raspberry Pi Camera Module v2</a> and <a target='_blank' href="https://www.raspberrypi.org/products/raspberry-pi-touch-display/">7" touchscreen</a>. A generic 5V wall wart power supply was directly hooked to the Raspberry Pi and touchscreen to provide power.</p>
-<p><center>
+<p><center></p>
 <div class="container" style="width: 75%">
     <div class="row">
         <div class="col-sm-6">
@@ -155,7 +155,7 @@ The photobooth is laid out with a camera on one side and a 7" screen on the othe
         </div>
     </div>
 </div>
-</center></p>
+<p></center></p>
 <p>I designed an laser-cut acrylic enclosure in <a target='_blank' href='https://cad.onshape.com/documents/9cab43432cf66ea9025f394f/w/33e44abe87cb871cb84aa6a3/e/cd991b4c983504fe6c4af452'>Onshape</a>. The enclosure was cut out of 1/8" acrylic and glued together with standard cyanoacrylate superglue. The bottom of the enclosure has a 1/4-20 tapped hole so that the whole unit can be mounted on any standard tripod. The camera module is screwed into the front with 2-56 screws. The Raspberry Pi attaches to the back of the touchscreen with the provided standoffs, and the screen itself is attached to the back of the enclosure with double-sided tape. The power cable is routed out through slots on the bottom of the enclosure.</p>
 <h1>Software</h1>
 <p><center>
@@ -181,7 +181,7 @@ The software involved a number of different software packages tied together by a
 </center></p>
 <p>In total there are three pages shown on the screen. At the beginning, a simple welcome screen instructs the viewer to press the button. The moment the button is pressed, the camera snaps a photo and launches Blender to begin processing. The screen switches to a processing page, showing the raw captured output and a simple spinner to show activity. Once the final output is ready, a results page is displayed with the final image as well as links and a QR code where the result files can be downloaded for further exploration.</p>
 <h1>Results</h1>
-<p><center>
+<p><center></p>
 <div class='container' style='max-height: 50%'>
     <div class='row'>
         <div class='col-sm-3'>
@@ -210,7 +210,7 @@ The software involved a number of different software packages tied together by a
         </div>
     </div>
 </div>
-</center></p>
+<p></center></p>
 <p>Overall the photobooth compositing performs very well when given a stable background and decent lighting. When it was demonstrated at the STC 309 year end project exhibition, a number of people came up and took photos on their own, without the need for instruction. A few people had difficult connecting to the network to download the results, but overall I felt that the photobooth achieved the starting goal of keeping the device easy to use. In the future, it may be interesting to look at how the device performs in a formal class environment rather than an open exhibition.</p>
             </div>
             <!-- /.entry-content -->
