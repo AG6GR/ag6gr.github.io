@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Garage Door Opener - Sunny He</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/projects-garagedooropener.html">
+
+        <meta name="author" content="Sunny He" />
+        <meta name="keywords" content="electrical-engineering,iot,c" />
+        <meta name="description" content="ESP32 HomeKit enabled garage door opener" />
+
+        <meta property="og:site_name" content="Sunny He" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Garage Door Opener"/>
+        <meta property="og:url" content="/projects-garagedooropener.html"/>
+        <meta property="og:description" content="ESP32 HomeKit enabled garage door opener"/>
+        <meta property="article:published_time" content="2022-12-20" />
+            <meta property="article:section" content="Projects" />
+            <meta property="article:tag" content="electrical-engineering" />
+            <meta property="article:tag" content="iot" />
+            <meta property="article:tag" content="c" />
+            <meta property="article:author" content="Sunny He" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Sunny He            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/projects.html">Projects</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/projects-garagedooropener.html"
+                       rel="bookmark"
+                       title="Permalink to Garage Door Opener" style="color:black">
+                        Garage Door Opener
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2022-12-20T12:00:00-05:00"> Tue 20 December 2022</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/electrical-engineering.html">electrical-engineering</a>
+        /
+	<a href="/tag/iot.html">iot</a>
+        /
+	<a href="/tag/c.html">c</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h1>Garage Door Opener</h1>
+<p><center><img src="/images/board.jpg" alt="Finished PCB" width="75%"/></center></p>
+<p>A bare-bones ESP32 based HomeKit enabled garage door opener using <a href="https://github.com/HomeSpan/HomeSpan">HomeSpan</a>.</p>
+<h1>Hardware</h1>
+<p>To avoid any modification to the garage door opener itself, I designed the board to use its own position sensor and emulate a wall switch to trigger the garage door movement. Some commercial products emulate a wireless remote and indeed the ESP32 does have some <a href="https://github.com/HomeSpan/HomeSpan/blob/master/docs/RMT.md">special function hardware</a> for generating pulse code signals, however I decided to skip the complexity for this first revision as the holiday season presented some serious schedule pressure for getting this finished. Likewise, for the door position sensor some products use a tilt sensor with the assumption the board would be glued to the moving door itself. I again opted for the simpler solution of a microswitch mounted on one of the door's guide rails to avoid the complexity of dealing with battery power and wireless control.</p>
+<p><center><img src="/images/schematic.png" alt="Schematic" width="90%"/></center></p>
+<p>To actuate the door, a wall switch normally would short a pair of lines connected to terminals on the back of the garage door opener. I measured these terminals with a voltmeter and found the high side was pulled up to 24V nominal, above some floating ground potential. Also of note is that the threshold voltage for triggering was quite low, less than 0.1V difference. The ideal part to use in this case would be a small relay, but I didn't have any on hand. As an alternative, I ended up using an optoisolator with an NPN transistor in a Darlington configuration to achieve the isolation and current capacity needed to drive the opener's trigger line low.</p>
+<p>One unexpected issue that came up after the board arrived was that the NPN BJT was not fully turning on before the line voltage collapsed, leaving the line stuck at a ~0.7V base emitter diode voltage, which was just a bit above the threshold voltage for triggering the opener. I bodged in a 0.1 µF capacitor between the high/low side of the screw terminal to fix this. The extra capacitance ensures the BJT has just enough time to fully turn on, driving the line completely low and triggering the opener.</p>
+<h1>Firmware</h1>
+<p>The firmware relies on the excellent <a href="https://github.com/HomeSpan/HomeSpan">HomeSpan</a> project to implement HomeKit support. It was very straightforward to implement a GarageDoorOpener service and hook it up to the appropriate inputs/outputs. With some fine tuning of switch debouncing, everything was installed and ready by Christmas.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> Sunny He
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-109315919-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
